@@ -56,6 +56,9 @@ namespace DoseEffectsWithGui {
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart2;
 	private: System::Windows::Forms::Button^  button6;
 	private: System::Windows::Forms::Label^  label15;
+	private: System::Windows::Forms::Label^  label18;
+	private: System::Windows::Forms::Label^  label17;
+	private: System::Windows::Forms::Label^  label16;
 
 
 
@@ -88,12 +91,15 @@ namespace DoseEffectsWithGui {
 			}
 			if (u != NULL) {
 				delete[] u;
+				u = NULL;
 				if (w != NULL) {
 					delete[] w;
+					w = NULL;
 				}
 			} 
 			if (f != NULL) {
 				delete[] f;
+				f = NULL;
 			}
 		}
 	private: System::Windows::Forms::TabControl^  tabControl1;
@@ -156,6 +162,12 @@ namespace DoseEffectsWithGui {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series11 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series12 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series13 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series14 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -197,11 +209,14 @@ namespace DoseEffectsWithGui {
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->chart2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->chart2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -218,8 +233,8 @@ namespace DoseEffectsWithGui {
 			this->tabPage2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->tabPage3->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// tabControl1
@@ -230,7 +245,7 @@ namespace DoseEffectsWithGui {
 			this->tabControl1->Location = System::Drawing::Point(8, 17);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(773, 435);
+			this->tabControl1->Size = System::Drawing::Size(769, 473);
 			this->tabControl1->TabIndex = 0;
 			// 
 			// tabPage1
@@ -243,7 +258,7 @@ namespace DoseEffectsWithGui {
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(765, 409);
+			this->tabPage1->Size = System::Drawing::Size(761, 447);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Вычисления";
 			this->tabPage1->UseVisualStyleBackColor = true;
@@ -595,14 +610,14 @@ namespace DoseEffectsWithGui {
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(765, 409);
+			this->tabPage2->Size = System::Drawing::Size(761, 447);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Графики";
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(676, 375);
+			this->button5->Location = System::Drawing::Point(858, 499);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(75, 23);
 			this->button5->TabIndex = 2;
@@ -613,7 +628,7 @@ namespace DoseEffectsWithGui {
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(548, 390);
+			this->label11->Location = System::Drawing::Point(558, 411);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(12, 13);
 			this->label11->TabIndex = 1;
@@ -622,16 +637,18 @@ namespace DoseEffectsWithGui {
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(6, 6);
+			this->label12->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 20.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(197, 29);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(134, 13);
+			this->label12->Size = System::Drawing::Size(284, 31);
 			this->label12->TabIndex = 1;
 			this->label12->Text = L"Функция распределения";
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(6, 23);
+			this->label10->Location = System::Drawing::Point(24, 63);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(24, 13);
 			this->label10->TabIndex = 1;
@@ -644,7 +661,7 @@ namespace DoseEffectsWithGui {
 			this->chart1->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(6, 6);
+			this->chart1->Location = System::Drawing::Point(0, 50);
 			this->chart1->Name = L"chart1";
 			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Bright;
 			series1->BorderWidth = 3;
@@ -716,6 +733,9 @@ namespace DoseEffectsWithGui {
 			// 
 			// tabPage3
 			// 
+			this->tabPage3->Controls->Add(this->label18);
+			this->tabPage3->Controls->Add(this->label17);
+			this->tabPage3->Controls->Add(this->label16);
 			this->tabPage3->Controls->Add(this->chart2);
 			this->tabPage3->Controls->Add(this->button6);
 			this->tabPage3->Controls->Add(this->label15);
@@ -723,39 +743,78 @@ namespace DoseEffectsWithGui {
 			this->tabPage3->Location = System::Drawing::Point(4, 22);
 			this->tabPage3->Name = L"tabPage3";
 			this->tabPage3->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage3->Size = System::Drawing::Size(765, 409);
+			this->tabPage3->Size = System::Drawing::Size(761, 447);
 			this->tabPage3->TabIndex = 2;
 			this->tabPage3->Text = L"kNN";
 			this->tabPage3->UseVisualStyleBackColor = true;
 			// 
-			// numericUpDown1
+			// chart2
 			// 
-			this->numericUpDown1->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
-			this->numericUpDown1->Location = System::Drawing::Point(42, 6);
-			this->numericUpDown1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
-			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(56, 20);
-			this->numericUpDown1->TabIndex = 0;
-			this->numericUpDown1->Tag = L"";
-			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
-			this->numericUpDown1->ValueChanged += gcnew System::EventHandler(this, &MyForm::numericUpDown1_ValueChanged);
-			// 
-			// openFileDialog1
-			// 
-			this->openFileDialog1->FileName = L"openFileDialog1";
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(14, 8);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(22, 13);
-			this->label15->TabIndex = 1;
-			this->label15->Text = L"k =";
+			chartArea2->AxisY->Maximum = 1;
+			chartArea2->AxisY->Minimum = 0;
+			chartArea2->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart2->Legends->Add(legend2);
+			this->chart2->Location = System::Drawing::Point(1, 50);
+			this->chart2->Name = L"chart2";
+			this->chart2->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Bright;
+			series8->BorderWidth = 4;
+			series8->ChartArea = L"ChartArea1";
+			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series8->Legend = L"Legend1";
+			series8->LegendText = L"Епанечникова ядро";
+			series8->Name = L"Func";
+			series9->BorderWidth = 4;
+			series9->ChartArea = L"ChartArea1";
+			series9->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series9->Legend = L"Legend1";
+			series9->LegendText = L"Косинус-ядро";
+			series9->Name = L"Func1";
+			series10->BorderWidth = 4;
+			series10->ChartArea = L"ChartArea1";
+			series10->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series10->Legend = L"Legend1";
+			series10->LegendText = L"Лапласа ядро";
+			series10->Name = L"Func2";
+			series11->BorderWidth = 4;
+			series11->ChartArea = L"ChartArea1";
+			series11->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series11->Legend = L"Legend1";
+			series11->LegendText = L"Гауссово ядро";
+			series11->Name = L"Func3";
+			series12->BorderWidth = 4;
+			series12->ChartArea = L"ChartArea1";
+			series12->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series12->Legend = L"Legend1";
+			series12->LegendText = L"Квартическое ядро";
+			series12->Name = L"Func4";
+			series13->BorderWidth = 4;
+			series13->ChartArea = L"ChartArea1";
+			series13->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series13->Legend = L"Legend1";
+			series13->LegendText = L"Равномерное ядро";
+			series13->Name = L"Func5";
+			series14->BorderWidth = 4;
+			series14->ChartArea = L"ChartArea1";
+			series14->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series14->Legend = L"Legend1";
+			series14->LegendText = L"Треугольное ядро";
+			series14->Name = L"Func6";
+			this->chart2->Series->Add(series8);
+			this->chart2->Series->Add(series9);
+			this->chart2->Series->Add(series10);
+			this->chart2->Series->Add(series11);
+			this->chart2->Series->Add(series12);
+			this->chart2->Series->Add(series13);
+			this->chart2->Series->Add(series14);
+			this->chart2->Size = System::Drawing::Size(760, 397);
+			this->chart2->TabIndex = 3;
+			this->chart2->Text = L"chart2";
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(104, 6);
+			this->button6->Location = System::Drawing::Point(651, 24);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(87, 20);
 			this->button6->TabIndex = 2;
@@ -763,26 +822,64 @@ namespace DoseEffectsWithGui {
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
-			// chart2
+			// label15
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->chart2->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->chart2->Legends->Add(legend2);
-			this->chart2->Location = System::Drawing::Point(10, 32);
-			this->chart2->Name = L"chart2";
-			series8->ChartArea = L"ChartArea1";
-			series8->Legend = L"Legend1";
-			series8->Name = L"Series1";
-			this->chart2->Series->Add(series8);
-			this->chart2->Size = System::Drawing::Size(756, 397);
-			this->chart2->TabIndex = 3;
-			this->chart2->Text = L"chart2";
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(561, 26);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(22, 13);
+			this->label15->TabIndex = 1;
+			this->label15->Text = L"k =";
+			// 
+			// numericUpDown1
+			// 
+			this->numericUpDown1->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
+			this->numericUpDown1->Location = System::Drawing::Point(589, 24);
+			this->numericUpDown1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
+			this->numericUpDown1->Name = L"numericUpDown1";
+			this->numericUpDown1->Size = System::Drawing::Size(56, 20);
+			this->numericUpDown1->TabIndex = 0;
+			this->numericUpDown1->Tag = L"";
+			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 6, 0, 0, 0 });
+			this->numericUpDown1->ValueChanged += gcnew System::EventHandler(this, &MyForm::numericUpDown1_ValueChanged);
+			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 20.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label16->Location = System::Drawing::Point(232, 35);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(140, 31);
+			this->label16->TabIndex = 4;
+			this->label16->Text = L"kNN оценка";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(23, 64);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(24, 13);
+			this->label17->TabIndex = 5;
+			this->label17->Text = L"F(x)";
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(561, 411);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(12, 13);
+			this->label18->TabIndex = 6;
+			this->label18->Text = L"x";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
-			this->ClientSize = System::Drawing::Size(860, 503);
+			this->ClientSize = System::Drawing::Size(974, 587);
 			this->Controls->Add(this->tabControl1);
 			this->DoubleBuffered = true;
 			this->MaximizeBox = false;
@@ -812,8 +909,8 @@ namespace DoseEffectsWithGui {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->tabPage3->ResumeLayout(false);
 			this->tabPage3->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -822,33 +919,34 @@ namespace DoseEffectsWithGui {
 	}
 
 
-	private: void addToGraph(coreType ct) {
+	private: void addToGraph(coreType ct, System::Windows::Forms::DataVisualization::Charting::Chart^ chart) {
+				
 		if (u == NULL) return;
 		System::Windows::Forms::DataVisualization::Charting::Series^ col;
 		switch (ct)
 		{
 		case DoseEffectsWithGui::epiph:
 
-			col = this->chart1->Series["Func"];
+			col = chart->Series["Func"];
 			break;
 		case DoseEffectsWithGui::cos:
 
-			col = this->chart1->Series["Func1"];
+			col = chart->Series["Func1"];
 			break;
 		case DoseEffectsWithGui::lap:
-			col = this->chart1->Series["Func2"];
+			col = chart->Series["Func2"];
 			break;
 		case DoseEffectsWithGui::gaus:
-			col = this->chart1->Series["Func3"];
+			col = chart->Series["Func3"];
 			break;
 		case DoseEffectsWithGui::quart:
-			col = this->chart1->Series["Func4"];
+			col = chart->Series["Func4"];
 			break;
 		case DoseEffectsWithGui::ravn:
-			col = this->chart1->Series["Func5"];
+			col = chart->Series["Func5"];
 			break;
 		case DoseEffectsWithGui::triangl:
-			col = this->chart1->Series["Func6"];
+			col = chart->Series["Func6"];
 			break;
 		default:
 			break;
@@ -859,19 +957,19 @@ namespace DoseEffectsWithGui {
 		}
 	}
 
-	private: void clearAllGraphs() {
-		this->chart1->Series["Func"]->Points->Clear();
-		this->chart1->Series["Func1"]->Points->Clear();
-		this->chart1->Series["Func2"]->Points->Clear();
-		this->chart1->Series["Func3"]->Points->Clear();
-		this->chart1->Series["Func4"]->Points->Clear();
-		this->chart1->Series["Func5"]->Points->Clear();
-		this->chart1->Series["Func6"]->Points->Clear();
+	private: void clearAllGraphs(System::Windows::Forms::DataVisualization::Charting::Chart^ chart) {
+		chart->Series["Func"]->Points->Clear();
+		chart->Series["Func1"]->Points->Clear();
+		chart->Series["Func2"]->Points->Clear();
+		chart->Series["Func3"]->Points->Clear();
+		chart->Series["Func4"]->Points->Clear();
+		chart->Series["Func5"]->Points->Clear();
+		chart->Series["Func6"]->Points->Clear();
 	}
 
-	private: void drawGraph(coreType ct) {
-		clearAllGraphs();
-		addToGraph(ct);
+	private: void drawGraph(coreType ct, System::Windows::Forms::DataVisualization::Charting::Chart^ chart) {
+		clearAllGraphs(chart);
+		addToGraph(ct, chart);
 	}
 	private: coreType getCoreType() {
 		String^ coreValue = Convert::ToString(comboBox1->SelectedItem);
@@ -968,7 +1066,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
 	delete core;
 	button4->Enabled = true;
-	drawGraph(cT);
+	drawGraph(cT, this->chart1);
 }
 private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	if (Convert::ToString(comboBox2->SelectedItem) == "From file") {
@@ -1021,7 +1119,7 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 	f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
 	delete core;
 	button4->Enabled = true;
-	addToGraph(cT);
+	addToGraph(cT, this->chart1);
 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 	button4->Enabled = false;
@@ -1035,7 +1133,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	numberOfPoints = 0;
 	volume = 0;
 	refreshData();
-	drawGraph(cT);
+	drawGraph(cT, this->chart1);
 }
 private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 	
@@ -1048,7 +1146,7 @@ private: System::Void chart1_Paint(System::Object^  sender, System::Windows::For
 
 }
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-	clearAllGraphs();
+	clearAllGraphs(this->chart1);
 }
 
 private: void countConfidenceInterval(double &low, double &high, double mean, int n, double dispersion) {
@@ -1130,7 +1228,7 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 	f = getKNN(x_low, x_high, step, core, k, u, w, volume);
 	delete core;
 	button4->Enabled = true;
-	addToGraph(cT);
+	addToGraph(cT,this->chart2);
 }
 };
 }

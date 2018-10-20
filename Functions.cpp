@@ -82,16 +82,17 @@ void getH(double x_low, double x_high, double step, int k, double *u, double *w,
 	//мы ищем окно для каждой точки. в окно должны умещаться k соседей
 	for (int i = 0; i < number_of_calc; i++) {
 		//если точка не найдена, то окно фиксированное (0.1). Просто рандомное число
-		index = -1;
-		while (u[index] <= x) {                                       
+		index = 0;
+		while (u[index] < x && index < size) {                                       
 			index++;
 		}
+		index--;
 		index_left = index - k / 2; //k - четное?
 		index_right = index + k / 2;
 
 		if (!(index_left < 0 || index_right > size)) {
-			h_left = x - u[index_left];
-			h_right = u[index_right] - x;
+			h_left = abs(x - u[index_left]);
+			h_right = abs(u[index_right] - x);
 			if (h_left > h_right) {
 				h[i] = h_left;
 			}
@@ -102,14 +103,13 @@ void getH(double x_low, double x_high, double step, int k, double *u, double *w,
 		else {
 			if (index_left < 0) {
 				index_right = index + k;
-				h[i] = u[index_right] - x;
+				h[i] = abs(u[index_right] - x);
 			}
 			else {
 				index_left = index - k;
-				h[i] = x - u[index_left];
+				h[i] = abs(x - u[index_left]);
 			}
 		}
-		
 
 		//не учитывается ситуация, когда x вне пределов значений u
 		x += step;
@@ -119,8 +119,11 @@ void getH(double x_low, double x_high, double step, int k, double *u, double *w,
 
 point* getKNN(double x_low, double x_high, double step, Core *core, int k, double *u, double *w, int size) {
 	int number_of_calc = (int)((x_high - x_low) / step);
-	double *h = new double [number_of_calc];
-	getH(x_low, x_high, step, k, u, w, size, h);
+	double *h = new double [number_of_calc], 
+		*u_copy = new double [size]; //мы сортируем массив при поиске окон, поэтому надо создавать копию
+
+	memcpy(u_copy, u, size);
+	getH(x_low, x_high, step, k, u_copy, w, size, h);
 	point* result = new point[number_of_calc];
 	double x = x_low, y = 0.0;
 	for (int i = 0; i < number_of_calc; i++) {
@@ -129,6 +132,7 @@ point* getKNN(double x_low, double x_high, double step, Core *core, int k, doubl
 		result[i].y = y;
 		x += step;
 	}
+	delete u_copy;
 	delete[] h;
 	return result;
 }
