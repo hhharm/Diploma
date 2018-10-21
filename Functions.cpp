@@ -80,9 +80,9 @@ void getH(double x_low, double x_high, double step, int k, double *u, double *w,
 	double h_left, h_right, //здесь храним высчитанные границы текущего интервала
 		x = x_low; //это точка, которую рассматриваем сейчас
 	//мы ищем окно для каждой точки. в окно должны умещаться k соседей
+
+	index = 0;
 	for (int i = 0; i < number_of_calc; i++) {
-		//если точка не найдена, то окно фиксированное (0.1). Просто рандомное число
-		index = 0;
 		while (u[index] < x && index < size) {                                       
 			index++;
 		}
@@ -122,7 +122,7 @@ point* getKNN(double x_low, double x_high, double step, Core *core, int k, doubl
 	double *h = new double [number_of_calc], 
 		*u_copy = new double [size]; //мы сортируем массив при поиске окон, поэтому надо создавать копию
 
-	memcpy(u_copy, u, size);
+	memcpy(u_copy, u, size * sizeof(double));
 	getH(x_low, x_high, step, k, u_copy, w, size, h);
 	point* result = new point[number_of_calc];
 	double x = x_low, y = 0.0;
@@ -136,3 +136,18 @@ point* getKNN(double x_low, double x_high, double step, Core *core, int k, doubl
 	delete[] h;
 	return result;
 }
+
+void countConfidenceInterval(double &low, double &high, double mean, int n, double dispersion) {
+	//Входные аргументы : n - размер выборки, дисперсия и мат. ожидания понятно что,
+	//  критическое значение (какой процент должен попасть в интервал)
+	// дл 95% = 1.96
+	// для 98% = 3.58
+
+	//вычисляем доверительный интервал (где большинство значений будет лежать)
+	//изменяет значения low и high соответственно
+
+	double range = 3.58 * (dispersion) / sqrt(n);
+	low = mean - range;
+	high = mean + range;
+}
+

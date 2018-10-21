@@ -37,8 +37,8 @@ namespace DoseEffectsWithGui {
 
 	private: System::Windows::Forms::Label^  label12;
 
-	private: System::Windows::Forms::Label^  label5;
-	private: System::Windows::Forms::Label^  label4;
+
+
 	private: System::Windows::Forms::GroupBox^  groupBox5;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown7;
@@ -174,8 +174,6 @@ namespace DoseEffectsWithGui {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->dataGridViewU = (gcnew System::Windows::Forms::DataGridView());
 			this->column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -209,14 +207,14 @@ namespace DoseEffectsWithGui {
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->chart2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->label16 = (gcnew System::Windows::Forms::Label());
-			this->label17 = (gcnew System::Windows::Forms::Label());
-			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -265,7 +263,7 @@ namespace DoseEffectsWithGui {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(16, 324);
+			this->button2->Location = System::Drawing::Point(15, 369);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 27);
 			this->button2->TabIndex = 1;
@@ -276,7 +274,7 @@ namespace DoseEffectsWithGui {
 			// button4
 			// 
 			this->button4->Enabled = false;
-			this->button4->Location = System::Drawing::Point(15, 357);
+			this->button4->Location = System::Drawing::Point(14, 402);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(175, 27);
 			this->button4->TabIndex = 1;
@@ -286,7 +284,7 @@ namespace DoseEffectsWithGui {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(97, 324);
+			this->button1->Location = System::Drawing::Point(96, 369);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(93, 27);
 			this->button1->TabIndex = 1;
@@ -296,33 +294,13 @@ namespace DoseEffectsWithGui {
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->Controls->Add(this->label5);
-			this->groupBox2->Controls->Add(this->label4);
 			this->groupBox2->Controls->Add(this->dataGridViewU);
 			this->groupBox2->Location = System::Drawing::Point(373, 6);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(386, 397);
+			this->groupBox2->Size = System::Drawing::Size(386, 435);
 			this->groupBox2->TabIndex = 0;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Данные";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(16, 16);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(66, 13);
-			this->label5->TabIndex = 1;
-			this->label5->Text = L"Значения U";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(211, 16);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(69, 13);
-			this->label4->TabIndex = 1;
-			this->label4->Text = L"Значения W";
 			// 
 			// dataGridViewU
 			// 
@@ -333,10 +311,10 @@ namespace DoseEffectsWithGui {
 				this->column1,
 					this->column2
 			});
-			this->dataGridViewU->Location = System::Drawing::Point(19, 31);
+			this->dataGridViewU->Location = System::Drawing::Point(6, 19);
 			this->dataGridViewU->Name = L"dataGridViewU";
 			this->dataGridViewU->ReadOnly = true;
-			this->dataGridViewU->Size = System::Drawing::Size(361, 360);
+			this->dataGridViewU->Size = System::Drawing::Size(374, 410);
 			this->dataGridViewU->TabIndex = 0;
 			this->dataGridViewU->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
 			// 
@@ -363,7 +341,7 @@ namespace DoseEffectsWithGui {
 			this->groupBox1->Controls->Add(this->groupBox4);
 			this->groupBox1->Location = System::Drawing::Point(10, 6);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(357, 312);
+			this->groupBox1->Size = System::Drawing::Size(357, 357);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Параметры вычисления";
@@ -375,9 +353,9 @@ namespace DoseEffectsWithGui {
 			this->groupBox5->Controls->Add(this->numericUpDown5);
 			this->groupBox5->Controls->Add(this->label9);
 			this->groupBox5->Controls->Add(this->label8);
-			this->groupBox5->Location = System::Drawing::Point(178, 39);
+			this->groupBox5->Location = System::Drawing::Point(178, 30);
 			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(175, 226);
+			this->groupBox5->Size = System::Drawing::Size(179, 321);
 			this->groupBox5->TabIndex = 4;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"Ядро и окно вычисления";
@@ -408,7 +386,7 @@ namespace DoseEffectsWithGui {
 			// 
 			this->numericUpDown5->DecimalPlaces = 2;
 			this->numericUpDown5->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 65536 });
-			this->numericUpDown5->Location = System::Drawing::Point(5, 133);
+			this->numericUpDown5->Location = System::Drawing::Point(5, 97);
 			this->numericUpDown5->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1000, 0, 0, 0 });
 			this->numericUpDown5->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 65536 });
 			this->numericUpDown5->Name = L"numericUpDown5";
@@ -420,7 +398,7 @@ namespace DoseEffectsWithGui {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(4, 119);
+			this->label9->Location = System::Drawing::Point(4, 83);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(103, 13);
 			this->label9->TabIndex = 0;
@@ -429,7 +407,7 @@ namespace DoseEffectsWithGui {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(3, 105);
+			this->label8->Location = System::Drawing::Point(3, 69);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(172, 13);
 			this->label8->TabIndex = 0;
@@ -446,9 +424,9 @@ namespace DoseEffectsWithGui {
 			this->groupBox3->Controls->Add(this->label13);
 			this->groupBox3->Controls->Add(this->label7);
 			this->groupBox3->Controls->Add(this->label6);
-			this->groupBox3->Location = System::Drawing::Point(5, 133);
+			this->groupBox3->Location = System::Drawing::Point(4, 135);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(168, 173);
+			this->groupBox3->Size = System::Drawing::Size(168, 216);
 			this->groupBox3->TabIndex = 3;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Выборка";
@@ -462,6 +440,7 @@ namespace DoseEffectsWithGui {
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Выбрать файл";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Visible = false;
 			// 
 			// numericUpDown7
 			// 
@@ -471,7 +450,7 @@ namespace DoseEffectsWithGui {
 			this->numericUpDown7->Name = L"numericUpDown7";
 			this->numericUpDown7->Size = System::Drawing::Size(60, 20);
 			this->numericUpDown7->TabIndex = 1;
-			this->numericUpDown7->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 6, 0, 0, 65536 });
+			this->numericUpDown7->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			this->numericUpDown7->ValueChanged += gcnew System::EventHandler(this, &MyForm::numericUpDown7_ValueChanged);
 			// 
 			// numericUpDown4
@@ -561,7 +540,7 @@ namespace DoseEffectsWithGui {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(99, 20);
 			this->textBox2->TabIndex = 3;
-			this->textBox2->Text = L"1,1816";
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
 			// 
 			// textBox1
 			// 
@@ -569,7 +548,6 @@ namespace DoseEffectsWithGui {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(99, 20);
 			this->textBox1->TabIndex = 2;
-			this->textBox1->Text = L"-1,1816";
 			// 
 			// numericUpDown3
 			// 
@@ -580,7 +558,7 @@ namespace DoseEffectsWithGui {
 			this->numericUpDown3->Name = L"numericUpDown3";
 			this->numericUpDown3->Size = System::Drawing::Size(99, 20);
 			this->numericUpDown3->TabIndex = 1;
-			this->numericUpDown3->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 131072 });
+			this->numericUpDown3->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 196608 });
 			// 
 			// label3
 			// 
@@ -748,6 +726,35 @@ namespace DoseEffectsWithGui {
 			this->tabPage3->Text = L"kNN";
 			this->tabPage3->UseVisualStyleBackColor = true;
 			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(561, 411);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(12, 13);
+			this->label18->TabIndex = 6;
+			this->label18->Text = L"x";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(23, 64);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(24, 13);
+			this->label17->TabIndex = 5;
+			this->label17->Text = L"F(x)";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 20.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label16->Location = System::Drawing::Point(232, 35);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(140, 31);
+			this->label16->TabIndex = 4;
+			this->label16->Text = L"kNN оценка";
+			// 
 			// chart2
 			// 
 			chartArea2->AxisY->Maximum = 1;
@@ -759,43 +766,43 @@ namespace DoseEffectsWithGui {
 			this->chart2->Location = System::Drawing::Point(1, 50);
 			this->chart2->Name = L"chart2";
 			this->chart2->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Bright;
-			series8->BorderWidth = 4;
+			series8->BorderWidth = 3;
 			series8->ChartArea = L"ChartArea1";
 			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series8->Legend = L"Legend1";
 			series8->LegendText = L"Епанечникова ядро";
 			series8->Name = L"Func";
-			series9->BorderWidth = 4;
+			series9->BorderWidth = 3;
 			series9->ChartArea = L"ChartArea1";
 			series9->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series9->Legend = L"Legend1";
 			series9->LegendText = L"Косинус-ядро";
 			series9->Name = L"Func1";
-			series10->BorderWidth = 4;
+			series10->BorderWidth = 3;
 			series10->ChartArea = L"ChartArea1";
 			series10->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series10->Legend = L"Legend1";
 			series10->LegendText = L"Лапласа ядро";
 			series10->Name = L"Func2";
-			series11->BorderWidth = 4;
+			series11->BorderWidth = 3;
 			series11->ChartArea = L"ChartArea1";
 			series11->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series11->Legend = L"Legend1";
 			series11->LegendText = L"Гауссово ядро";
 			series11->Name = L"Func3";
-			series12->BorderWidth = 4;
+			series12->BorderWidth = 3;
 			series12->ChartArea = L"ChartArea1";
 			series12->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series12->Legend = L"Legend1";
 			series12->LegendText = L"Квартическое ядро";
 			series12->Name = L"Func4";
-			series13->BorderWidth = 4;
+			series13->BorderWidth = 3;
 			series13->ChartArea = L"ChartArea1";
 			series13->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series13->Legend = L"Legend1";
 			series13->LegendText = L"Равномерное ядро";
 			series13->Name = L"Func5";
-			series14->BorderWidth = 4;
+			series14->BorderWidth = 3;
 			series14->ChartArea = L"ChartArea1";
 			series14->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series14->Legend = L"Legend1";
@@ -814,7 +821,7 @@ namespace DoseEffectsWithGui {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(651, 24);
+			this->button6->Location = System::Drawing::Point(105, 15);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(87, 20);
 			this->button6->TabIndex = 2;
@@ -825,7 +832,7 @@ namespace DoseEffectsWithGui {
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(561, 26);
+			this->label15->Location = System::Drawing::Point(15, 17);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(22, 13);
 			this->label15->TabIndex = 1;
@@ -834,7 +841,7 @@ namespace DoseEffectsWithGui {
 			// numericUpDown1
 			// 
 			this->numericUpDown1->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
-			this->numericUpDown1->Location = System::Drawing::Point(589, 24);
+			this->numericUpDown1->Location = System::Drawing::Point(43, 15);
 			this->numericUpDown1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
 			this->numericUpDown1->Name = L"numericUpDown1";
 			this->numericUpDown1->Size = System::Drawing::Size(56, 20);
@@ -847,39 +854,10 @@ namespace DoseEffectsWithGui {
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
-			// label16
-			// 
-			this->label16->AutoSize = true;
-			this->label16->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 20.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(232, 35);
-			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(140, 31);
-			this->label16->TabIndex = 4;
-			this->label16->Text = L"kNN оценка";
-			// 
-			// label17
-			// 
-			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(23, 64);
-			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(24, 13);
-			this->label17->TabIndex = 5;
-			this->label17->Text = L"F(x)";
-			// 
-			// label18
-			// 
-			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(561, 411);
-			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(12, 13);
-			this->label18->TabIndex = 6;
-			this->label18->Text = L"x";
-			// 
 			// MyForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
-			this->ClientSize = System::Drawing::Size(974, 587);
+			this->ClientSize = System::Drawing::Size(803, 500);
 			this->Controls->Add(this->tabControl1);
 			this->DoubleBuffered = true;
 			this->MaximizeBox = false;
@@ -890,7 +868,6 @@ namespace DoseEffectsWithGui {
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
-			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewU))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox5->ResumeLayout(false);
@@ -1009,17 +986,37 @@ namespace DoseEffectsWithGui {
 	}
 
 
+ void parseInterval() {
+	 try {
+		 x_low = Convert::ToDouble(textBox1->Text);
+		 x_high = Convert::ToDouble(textBox2->Text);
+	 }
+	 catch (...) {
+		 try {
+			 String^ s = textBox1->Text->Replace('.', ',');
+			 x_low = Convert::ToDouble(s);
+			 s = textBox2->Text->Replace('.', ',');
+			 x_high = Convert::ToDouble(s);
+
+		 }
+		 catch (...) {
+			 MessageBox::Show("Интервал указан неверно");
+			 return;
+		 }
+	 }
+}
+
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	
+	//parseInterval();
 	if (u != NULL) {
-		delete[] u; 
+		delete[] u;
 		delete[] w;
 		delete[] f;
 	}
-	x_low  = Convert::ToDouble(textBox1->Text);
-	x_high = Convert::ToDouble(textBox2->Text);
-	step   = Convert::ToDouble(numericUpDown3->Value);
+	step = Convert::ToDouble(numericUpDown3->Value);
 	volume = Convert::ToInt32(numericUpDown4->Value);
-	c      = Convert::ToDouble(numericUpDown5->Value);
+	c = Convert::ToDouble(numericUpDown5->Value);
 	if (Convert::ToString(comboBox2->SelectedItem) != "From file") {
 		u = new double[volume];
 		w = new double[volume];
@@ -1027,6 +1024,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 		double D = Convert::ToDouble(numericUpDown7->Value);
 		createUArray(u, volume, M, D);
 		createWArray(u, w, volume, M, D);
+		updateRange();
 	}
 	else {
 		//donow
@@ -1080,8 +1078,7 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 	if (u != NULL) {
 		delete[] f;
 	}
-	x_low = Convert::ToDouble(textBox1->Text);
-	x_high = Convert::ToDouble(textBox2->Text);
+	parseInterval();
 	step = Convert::ToDouble(numericUpDown3->Value);
 	c = Convert::ToDouble(numericUpDown5->Value);
 	refreshData();
@@ -1149,33 +1146,30 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 	clearAllGraphs(this->chart1);
 }
 
-private: void countConfidenceInterval(double &low, double &high, double mean, int n, double dispersion) {
-	//Входные аргументы : n - размер выборки, дисперсия и мат. ожидания понятно что,
-	//  критическое значение (какой процент должен попасть в интервал)
-	// дл 95% = 1.96
-	// для 98% = 3.58
+		 void countThreeSigmaInterval(double &low, double &high, double mean, double dispersion) {
+			 double range = sqrt(dispersion) *3;
+			 low = mean - range;
+			 high = mean + range;
+		 }
 
-	//вычисляем доверительный интервал (где большинство значений будет лежать)
-	//изменяет значения low и high соответственно
-
-	double range = 3.58 * (dispersion) / sqrt(n);
-	low = mean - range;
-	high = mean + range;
-}
-
-    void countThreeSigmaInterval(double &low, double &high, double mean, double dispersion) {
-		double range = sqrt(dispersion) *1.5;
-		low = mean - range;
-		high = mean + range;
-	}
-
+		 void countInterval(double &low, double &high) {
+			 //строим функцию по всем встречающимся значениям
+			 low = *(std::min_element(u, u + volume));
+			 high = *(std::max_element(u, u + volume));
+		 }
+   
 	void updateRange() {
 		 double low, high;
-		 //countConfidenceInterval(low, high, Convert::ToDouble(numericUpDown6->Value), Convert::ToInt32(numericUpDown4->Value),
-		//	 Convert::ToDouble(numericUpDown7->Value));
-		 countThreeSigmaInterval(low, high, Convert::ToDouble(numericUpDown6->Value), Convert::ToDouble(numericUpDown7->Value));
+		 if (u != NULL) {
+			 countInterval(low, high);
+		 }
+		 else {
+			 countThreeSigmaInterval(low, high, Convert::ToDouble(numericUpDown6->Value), Convert::ToDouble(numericUpDown7->Value));
+		 }
 		 textBox1->Text = Convert::ToString(low);
 		 textBox2->Text = Convert::ToString(high);
+		 x_low = low;
+		 x_high = high;
 	 }
 
 private: System::Void numericUpDown6_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -1229,6 +1223,8 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 	delete core;
 	button4->Enabled = true;
 	addToGraph(cT,this->chart2);
+}
+private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
