@@ -150,24 +150,24 @@ namespace DoseEffectsWithGui {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series22 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series23 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series24 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series25 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series26 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series27 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series28 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series15 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series16 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series17 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series18 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series19 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series20 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series21 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series11 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series12 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series13 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series14 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -559,7 +559,7 @@ namespace DoseEffectsWithGui {
 			this->numericUpDown3->Name = L"numericUpDown3";
 			this->numericUpDown3->Size = System::Drawing::Size(99, 20);
 			this->numericUpDown3->TabIndex = 1;
-			this->numericUpDown3->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 131072 });
+			this->numericUpDown3->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 65536 });
 			// 
 			// label3
 			// 
@@ -635,76 +635,76 @@ namespace DoseEffectsWithGui {
 			// 
 			// chart1
 			// 
-			chartArea4->AxisY->Maximum = 1;
-			chartArea4->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea4);
-			legend4->Name = L"Legend1";
-			this->chart1->Legends->Add(legend4);
+			chartArea1->AxisY->Maximum = 1;
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(0, 50);
 			this->chart1->Name = L"chart1";
 			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Bright;
-			series22->BorderWidth = 3;
-			series22->ChartArea = L"ChartArea1";
-			series22->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series22->CustomProperties = L"EmptyPointValue=Zero";
-			series22->Legend = L"Legend1";
-			series22->LegendText = L"Епанечникова ядро";
-			series22->MarkerBorderWidth = 5;
-			series22->MarkerColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+			series1->BorderWidth = 3;
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series1->CustomProperties = L"EmptyPointValue=Zero";
+			series1->Legend = L"Legend1";
+			series1->LegendText = L"Епанечникова ядро";
+			series1->MarkerBorderWidth = 5;
+			series1->MarkerColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			series22->Name = L"Func";
-			series22->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
-			series22->SmartLabelStyle->MaxMovingDistance = 5;
-			series22->YValueType = System::Windows::Forms::DataVisualization::Charting::ChartValueType::Double;
-			series23->BorderWidth = 3;
-			series23->ChartArea = L"ChartArea1";
-			series23->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series23->Legend = L"Legend1";
-			series23->LegendText = L"Косинус-ядро";
-			series23->Name = L"Func1";
-			series23->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
-			series24->BorderWidth = 3;
-			series24->ChartArea = L"ChartArea1";
-			series24->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series24->Legend = L"Legend1";
-			series24->LegendText = L"Лапласа ядро";
-			series24->Name = L"Func2";
-			series24->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
-			series25->BorderWidth = 3;
-			series25->ChartArea = L"ChartArea1";
-			series25->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series25->Legend = L"Legend1";
-			series25->LegendText = L"Гауссово ядро";
-			series25->Name = L"Func3";
-			series25->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
-			series26->BorderWidth = 3;
-			series26->ChartArea = L"ChartArea1";
-			series26->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series26->Legend = L"Legend1";
-			series26->LegendText = L"Квартическое ядро";
-			series26->Name = L"Func4";
-			series26->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
-			series27->BorderWidth = 3;
-			series27->ChartArea = L"ChartArea1";
-			series27->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series27->Legend = L"Legend1";
-			series27->LegendText = L"Равномерное ядро";
-			series27->Name = L"Func5";
-			series27->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
-			series28->BorderWidth = 3;
-			series28->ChartArea = L"ChartArea1";
-			series28->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series28->Legend = L"Legend1";
-			series28->LegendText = L"Треугольное ядро";
-			series28->Name = L"Func6";
-			series28->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
-			this->chart1->Series->Add(series22);
-			this->chart1->Series->Add(series23);
-			this->chart1->Series->Add(series24);
-			this->chart1->Series->Add(series25);
-			this->chart1->Series->Add(series26);
-			this->chart1->Series->Add(series27);
-			this->chart1->Series->Add(series28);
+			series1->Name = L"Func";
+			series1->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
+			series1->SmartLabelStyle->MaxMovingDistance = 5;
+			series1->YValueType = System::Windows::Forms::DataVisualization::Charting::ChartValueType::Double;
+			series2->BorderWidth = 3;
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series2->Legend = L"Legend1";
+			series2->LegendText = L"Косинус-ядро";
+			series2->Name = L"Func1";
+			series2->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
+			series3->BorderWidth = 3;
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series3->Legend = L"Legend1";
+			series3->LegendText = L"Лапласа ядро";
+			series3->Name = L"Func2";
+			series3->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
+			series4->BorderWidth = 3;
+			series4->ChartArea = L"ChartArea1";
+			series4->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series4->Legend = L"Legend1";
+			series4->LegendText = L"Гауссово ядро";
+			series4->Name = L"Func3";
+			series4->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
+			series5->BorderWidth = 3;
+			series5->ChartArea = L"ChartArea1";
+			series5->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series5->Legend = L"Legend1";
+			series5->LegendText = L"Квартическое ядро";
+			series5->Name = L"Func4";
+			series5->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
+			series6->BorderWidth = 3;
+			series6->ChartArea = L"ChartArea1";
+			series6->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series6->Legend = L"Legend1";
+			series6->LegendText = L"Равномерное ядро";
+			series6->Name = L"Func5";
+			series6->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
+			series7->BorderWidth = 3;
+			series7->ChartArea = L"ChartArea1";
+			series7->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series7->Legend = L"Legend1";
+			series7->LegendText = L"Треугольное ядро";
+			series7->Name = L"Func6";
+			series7->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
+			this->chart1->Series->Add(series1);
+			this->chart1->Series->Add(series2);
+			this->chart1->Series->Add(series3);
+			this->chart1->Series->Add(series4);
+			this->chart1->Series->Add(series5);
+			this->chart1->Series->Add(series6);
+			this->chart1->Series->Add(series7);
 			this->chart1->Size = System::Drawing::Size(756, 397);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -758,64 +758,64 @@ namespace DoseEffectsWithGui {
 			// 
 			// chart2
 			// 
-			chartArea3->AxisY->Maximum = 1;
-			chartArea3->AxisY->Minimum = 0;
-			chartArea3->Name = L"ChartArea1";
-			this->chart2->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chart2->Legends->Add(legend3);
+			chartArea2->AxisY->Maximum = 1;
+			chartArea2->AxisY->Minimum = 0;
+			chartArea2->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart2->Legends->Add(legend2);
 			this->chart2->Location = System::Drawing::Point(1, 50);
 			this->chart2->Name = L"chart2";
 			this->chart2->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Bright;
-			series15->BorderWidth = 3;
-			series15->ChartArea = L"ChartArea1";
-			series15->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series15->Legend = L"Legend1";
-			series15->LegendText = L"Епанечникова ядро";
-			series15->Name = L"Func";
-			series16->BorderWidth = 3;
-			series16->ChartArea = L"ChartArea1";
-			series16->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series16->Legend = L"Legend1";
-			series16->LegendText = L"Косинус-ядро";
-			series16->Name = L"Func1";
-			series17->BorderWidth = 3;
-			series17->ChartArea = L"ChartArea1";
-			series17->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series17->Legend = L"Legend1";
-			series17->LegendText = L"Лапласа ядро";
-			series17->Name = L"Func2";
-			series18->BorderWidth = 3;
-			series18->ChartArea = L"ChartArea1";
-			series18->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series18->Legend = L"Legend1";
-			series18->LegendText = L"Гауссово ядро";
-			series18->Name = L"Func3";
-			series19->BorderWidth = 3;
-			series19->ChartArea = L"ChartArea1";
-			series19->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series19->Legend = L"Legend1";
-			series19->LegendText = L"Квартическое ядро";
-			series19->Name = L"Func4";
-			series20->BorderWidth = 3;
-			series20->ChartArea = L"ChartArea1";
-			series20->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series20->Legend = L"Legend1";
-			series20->LegendText = L"Равномерное ядро";
-			series20->Name = L"Func5";
-			series21->BorderWidth = 3;
-			series21->ChartArea = L"ChartArea1";
-			series21->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series21->Legend = L"Legend1";
-			series21->LegendText = L"Треугольное ядро";
-			series21->Name = L"Func6";
-			this->chart2->Series->Add(series15);
-			this->chart2->Series->Add(series16);
-			this->chart2->Series->Add(series17);
-			this->chart2->Series->Add(series18);
-			this->chart2->Series->Add(series19);
-			this->chart2->Series->Add(series20);
-			this->chart2->Series->Add(series21);
+			series8->BorderWidth = 3;
+			series8->ChartArea = L"ChartArea1";
+			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series8->Legend = L"Legend1";
+			series8->LegendText = L"Епанечникова ядро";
+			series8->Name = L"Func";
+			series9->BorderWidth = 3;
+			series9->ChartArea = L"ChartArea1";
+			series9->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series9->Legend = L"Legend1";
+			series9->LegendText = L"Косинус-ядро";
+			series9->Name = L"Func1";
+			series10->BorderWidth = 3;
+			series10->ChartArea = L"ChartArea1";
+			series10->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series10->Legend = L"Legend1";
+			series10->LegendText = L"Лапласа ядро";
+			series10->Name = L"Func2";
+			series11->BorderWidth = 3;
+			series11->ChartArea = L"ChartArea1";
+			series11->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series11->Legend = L"Legend1";
+			series11->LegendText = L"Гауссово ядро";
+			series11->Name = L"Func3";
+			series12->BorderWidth = 3;
+			series12->ChartArea = L"ChartArea1";
+			series12->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series12->Legend = L"Legend1";
+			series12->LegendText = L"Квартическое ядро";
+			series12->Name = L"Func4";
+			series13->BorderWidth = 3;
+			series13->ChartArea = L"ChartArea1";
+			series13->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series13->Legend = L"Legend1";
+			series13->LegendText = L"Равномерное ядро";
+			series13->Name = L"Func5";
+			series14->BorderWidth = 3;
+			series14->ChartArea = L"ChartArea1";
+			series14->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series14->Legend = L"Legend1";
+			series14->LegendText = L"Треугольное ядро";
+			series14->Name = L"Func6";
+			this->chart2->Series->Add(series8);
+			this->chart2->Series->Add(series9);
+			this->chart2->Series->Add(series10);
+			this->chart2->Series->Add(series11);
+			this->chart2->Series->Add(series12);
+			this->chart2->Series->Add(series13);
+			this->chart2->Series->Add(series14);
 			this->chart2->Size = System::Drawing::Size(760, 397);
 			this->chart2->TabIndex = 3;
 			this->chart2->Text = L"chart2";
@@ -1007,6 +1007,33 @@ namespace DoseEffectsWithGui {
 	 }
 }
 
+ void initialize_u() {
+	 u[0] = 0.1;
+	 u[1] = 0.15;
+	 u[3] = 0.25;
+	 u[9] = 0.4;
+	 u[7] = 0.6;
+	 u[5] = 1;
+	 u[6] = 1.2;
+	 u[8] = 1.8;
+	 u[4] = 2;
+	 u[2] = 2.15;
+
+ }
+ void initialize_v() {
+	 w[0] = 0;
+	 w[1] = 0;
+	 w[2] = 1;
+	 w[3] = 0;
+	 w[4] = 0;
+	 w[5] = 1;
+	 w[6] = 0;
+	 w[7] = 0;
+	 w[8] = 1;
+	 w[9] = 0;
+ }
+
+
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 	
 	//parseInterval();
@@ -1023,6 +1050,8 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 		w = new double[volume];
 		double M = Convert::ToDouble(numericUpDown6->Value);
 		double D = Convert::ToDouble(numericUpDown7->Value);
+		//initialize_u();
+		//initialize_v();
 		createUArray(u, volume, M, D);
 		createWArray(u, w, volume, M, D);
 		updateRange();
@@ -1185,8 +1214,7 @@ private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, Syste
 	}
 }
 private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-	x_low = Convert::ToDouble(textBox1->Text);
-	x_high = Convert::ToDouble(textBox2->Text);
+	updateRange();
 	step = Convert::ToDouble(numericUpDown3->Value);
 	refreshData();
 	numberOfPoints = (int)((x_high - x_low) / step);

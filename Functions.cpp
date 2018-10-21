@@ -6,15 +6,11 @@ double biasedEstimate(double x, double *u, int size_u, double *w, int size_w, do
 	double s1 = 0.0,
 		s0 = 0.0;
 	for (int j = 0; j < size_u; j++) {
-		//s0 += w[j] * (core->calculate((u[j] - x) / h) /h);
 		s0 += w[j] * core->calculate((u[j] - x) / h);
 	}
-	//s0 /= size_u;
 	for (int j = 0; j < size_u; j++) {
-		//s1 += (core->calculate((u[j] - x) / h)) / h; 
 		s1 += core->calculate((u[j] - x) / h);
 	}
-	//s1 /= size_u;
 	if (s1 == 0.0)
 		return 0.0;
 	else
@@ -62,60 +58,45 @@ point* getFbiased(double x_low, double x_high, double step, Core *core, double h
 	return result;
 }
 
+double getH_point(double x, double *u, int k, int size) {
+	//получение ширины окна просмотра для knn оценок
+	int ui = 0, i1, i2;
+	double distance = abs(u[size-1] - u[0]); //нашли диапазон значений
 
+	for (int i = 0; i < size; i++) {
+		if (abs(x - u[i]) < distance) { //ищем точку u[i], которая ближе всего к текущей
+			distance = abs(x - u[i]); 
+			ui = i;
+		}
+	}
+	i1 = ui;
+	i2 = ui;
+	//с 1, потому что первый сосед - u[ui]
+	for (int i = 1; i < k; i++) {
+		if (i1 == 0) {
+			i2++;
+			continue;
+		}
+		if (i2 == (size - 1)) {
+			i1--;
+			continue;
+		}
+		if (abs(u[ui] - u[i1 - 1]) <= abs(u[i2 + 1] - u[ui])) {
+			i1--;
+		}
+		else {
+			i2++;
+		}
+	}
+	return abs(u[i2] - u[i1]) / 2;
+}
 
 //Оценки ближайших соседей (kNN оценки) можно получить из оценок Надарая–Ватсона,
 //если  взять ширину окна просмотра данных h специальным образом, именно, 
 //чтобы в интервал x-h, x+h попадало k выборочных значений случайной величины U. Тогда величина h является случайной величиной. 
-void getH(double x_low, double x_high, double step, int k, double *u, double *w, int size, double* h) {
-	sort(u, u+size); //correct?
-	//удалить потом
-	for (int i = 1; i < size; i++) {
-		if (u[i] < u[i - 1]) {
-			throw "Сортировка кривая, перепиши! function getH";
-		}
-	}
-	int number_of_calc = (int)((x_high - x_low) / step); //число итераций вычеслений
-	int index, index_left,index_right; //здесь храним индекс 1ого элемента, который больше текущей точки
-	double h_left, h_right, h_tmp, //здесь храним высчитанные границы текущего интервала
-		x = x_low, //это точка, которую рассматриваем сейчас
-		k_counter = 0; 
-	//мы ищем окно для каждой точки. в окно должны умещаться k соседей
-
-	index = 0;
-	
-	for (int i = 0; i < number_of_calc; i++) {
-		while (u[index] < x && index < size) {                                       
-			index++; //ищем точку u[i], большую текущей
-		}
-		//смысл такой: идём влево и вправо, получаем начальную ширину окна слева-справа
-		k_counter = 2;
-		if (index == 0) {
-			h[i] = abs(u[k-1] - x); //если слева нет ничего, то h - это от k-ого соседа до текущей точки
-			continue;
-		}
-		index_left = index - 1;
-		index_right = index + 1;
-
-		//пока число найденных соседей не стало нужным нам мы идём в сторону наименьшего окна
-		while (k_counter < k && index_left > 0 && index_right < size) {
-			h_left = abs(u[index] - u[index_left]);
-			h_right = abs(u[index] - u[index_right]);
-			
-			if (h_left < h_right) {
-				index_left--;
-				h_tmp = h_right;
-			}
-			else {
-				index_right++;
-				h_tmp = h_left;
-			}
-			k_counter++;
-		}
-		if (k_counter != k) {
-			throw "В функция по поиску h в KNN случилось исключение :( Надо дописать код для случая, когда точки попадают на границу участка" ; 
-		}
-		x += step;
+void getH(double x, int iter_count, double step, int k, double *u, int size, double* h) {
+	for (int i = 0; i < iter_count; i++, x+= step) {
+		h[i] = getH_point(x,u,k,size);
 	}
 
 }
@@ -126,9 +107,9 @@ point* getKNN(double x_low, double x_high, double step, Core *core, int k, doubl
 	int number_of_calc = (int)((x_high - x_low) / step);
 	double *h = new double [number_of_calc], 
 		*u_copy = new double [size]; //при поиске окон мы сортируем массив на месте, поэтому надо создавать копию
-
-	memcpy(u_copy, u, size * sizeof(double));
-	getH(x_low, x_high, step, k, u_copy, w, size, h); 
+	memcpy(u_copy, u, sizeof(double)*size);
+	sort(u_copy, u_copy + size);
+	getH(x_low, number_of_calc, step, k, u_copy, size, h);
 	point* result = new point[number_of_calc];
 	double x = x_low, y = 0.0;
 	for (int i = 0; i < number_of_calc; i++) {
@@ -137,7 +118,7 @@ point* getKNN(double x_low, double x_high, double step, Core *core, int k, doubl
 		result[i].y = y;
 		x += step;
 	}
-	delete u_copy;
+	delete []u_copy;
 	delete[] h;
 	return result;
 }
