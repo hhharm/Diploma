@@ -77,53 +77,58 @@ void getH(double x_low, double x_high, double step, int k, double *u, double *w,
 	}
 	int number_of_calc = (int)((x_high - x_low) / step); //число итераций вычеслений
 	int index, index_left,index_right; //здесь храним индекс 1ого элемента, который больше текущей точки
-	double h_left, h_right, //здесь храним высчитанные границы текущего интервала
-		x = x_low; //это точка, которую рассматриваем сейчас
+	double h_left, h_right, h_tmp, //здесь храним высчитанные границы текущего интервала
+		x = x_low, //это точка, которую рассматриваем сейчас
+		k_counter = 0; 
 	//мы ищем окно для каждой точки. в окно должны умещаться k соседей
 
 	index = 0;
+	
 	for (int i = 0; i < number_of_calc; i++) {
 		while (u[index] < x && index < size) {                                       
-			index++;
+			index++; //ищем точку u[i], большую текущей
 		}
-		index--;
-		index_left = index - k / 2; //k - четное?
-		index_right = index + k / 2;
+		//смысл такой: идём влево и вправо, получаем начальную ширину окна слева-справа
+		k_counter = 2;
+		if (index == 0) {
+			h[i] = abs(u[k-1] - x); //если слева нет ничего, то h - это от k-ого соседа до текущей точки
+			continue;
+		}
+		index_left = index - 1;
+		index_right = index + 1;
 
-		if (!(index_left < 0 || index_right > size)) {
-			h_left = abs(x - u[index_left]);
-			h_right = abs(u[index_right] - x);
-			if (h_left > h_right) {
-				h[i] = h_left;
+		//пока число найденных соседей не стало нужным нам мы идём в сторону наименьшего окна
+		while (k_counter < k && index_left > 0 && index_right < size) {
+			h_left = abs(u[index] - u[index_left]);
+			h_right = abs(u[index] - u[index_right]);
+			
+			if (h_left < h_right) {
+				index_left--;
+				h_tmp = h_right;
 			}
 			else {
-				h[i] = h_right;
+				index_right++;
+				h_tmp = h_left;
 			}
+			k_counter++;
 		}
-		else {
-			if (index_left < 0) {
-				index_right = index + k;
-				h[i] = abs(u[index_right] - x);
-			}
-			else {
-				index_left = index - k;
-				h[i] = abs(x - u[index_left]);
-			}
+		if (k_counter != k) {
+			throw "В функция по поиску h в KNN случилось исключение :( Надо дописать код для случая, когда точки попадают на границу участка" ; 
 		}
-
-		//не учитывается ситуация, когда x вне пределов значений u
 		x += step;
 	}
 
 }
 
+//kNN оценка отличается от Надарая-Ватсона тем, что ширана окна (h) - изменяется. Она пересчитывается в каждой точке
+//в интервал от (x-h, x+h) должно попадать k соседей (собственно поэтому это kNN: k nearest neighbours)
 point* getKNN(double x_low, double x_high, double step, Core *core, int k, double *u, double *w, int size) {
 	int number_of_calc = (int)((x_high - x_low) / step);
 	double *h = new double [number_of_calc], 
-		*u_copy = new double [size]; //мы сортируем массив при поиске окон, поэтому надо создавать копию
+		*u_copy = new double [size]; //при поиске окон мы сортируем массив на месте, поэтому надо создавать копию
 
 	memcpy(u_copy, u, size * sizeof(double));
-	getH(x_low, x_high, step, k, u_copy, w, size, h);
+	getH(x_low, x_high, step, k, u_copy, w, size, h); 
 	point* result = new point[number_of_calc];
 	double x = x_low, y = 0.0;
 	for (int i = 0; i < number_of_calc; i++) {
