@@ -188,14 +188,13 @@ point* getNormalDistribution(double x_low, double x_high, double step, double M,
 //если у нас выборка получена случайным образом, то мы знаем заранее, как распределЄн ’ и можем
 // добавить на чарты графики CDF (cumulative distribution function), т.е. функцию распределени€ дл€ нормального
 // распределени€ с заданными мат. ожиданием и стандартным отклонением
-void MyForm::addCDFtoCharts() {
+void MyForm::addCDFtoChart(System::Windows::Forms::DataVisualization::Charting::Chart^ chart) {
 	if (Convert::ToString(comboBox2->SelectedItem) == "From file") return;
 
 	double M = Convert::ToDouble(numericUpDown6->Value); //mean
 	double D = Convert::ToDouble(numericUpDown7->Value); //dispersion
 	f = getNormalDistribution(x_low, x_high, step, M, sqrt(D));
-	addToGraph(notCore, chart1);
-	addToGraph(notCore, chart2);
+	addToGraph(notCore, chart);
 }
 
 Core* MyForm::createCore() {

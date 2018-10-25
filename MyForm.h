@@ -56,6 +56,8 @@ namespace DoseEffectsWithGui {
 	private: System::Windows::Forms::Label^  label18;
 	private: System::Windows::Forms::Label^  label17;
 	private: System::Windows::Forms::Label^  label16;
+	private: System::Windows::Forms::Button^  button7;
+	private: System::Windows::Forms::Button^  button8;
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart1;
 
 	public:
@@ -179,12 +181,14 @@ namespace DoseEffectsWithGui {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->label17 = (gcnew System::Windows::Forms::Label());
 			this->label16 = (gcnew System::Windows::Forms::Label());
@@ -221,7 +225,7 @@ namespace DoseEffectsWithGui {
 			this->tabControl1->Location = System::Drawing::Point(8, 17);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(769, 473);
+			this->tabControl1->Size = System::Drawing::Size(824, 505);
 			this->tabControl1->TabIndex = 0;
 			// 
 			// tabPage1
@@ -233,7 +237,7 @@ namespace DoseEffectsWithGui {
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(761, 447);
+			this->tabPage1->Size = System::Drawing::Size(816, 479);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Вычисления";
 			this->tabPage1->UseVisualStyleBackColor = true;
@@ -555,6 +559,7 @@ namespace DoseEffectsWithGui {
 			// 
 			// tabPage2
 			// 
+			this->tabPage2->Controls->Add(this->button7);
 			this->tabPage2->Controls->Add(this->button5);
 			this->tabPage2->Controls->Add(this->label11);
 			this->tabPage2->Controls->Add(this->label12);
@@ -563,10 +568,20 @@ namespace DoseEffectsWithGui {
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(761, 447);
+			this->tabPage2->Size = System::Drawing::Size(816, 479);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Графики";
 			this->tabPage2->UseVisualStyleBackColor = true;
+			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(705, 439);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(75, 23);
+			this->button7->TabIndex = 3;
+			this->button7->Text = L"Сбросить";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
 			// 
 			// button5
 			// 
@@ -693,6 +708,7 @@ namespace DoseEffectsWithGui {
 			// 
 			// tabPage3
 			// 
+			this->tabPage3->Controls->Add(this->button8);
 			this->tabPage3->Controls->Add(this->label18);
 			this->tabPage3->Controls->Add(this->label17);
 			this->tabPage3->Controls->Add(this->label16);
@@ -703,10 +719,20 @@ namespace DoseEffectsWithGui {
 			this->tabPage3->Location = System::Drawing::Point(4, 22);
 			this->tabPage3->Name = L"tabPage3";
 			this->tabPage3->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage3->Size = System::Drawing::Size(761, 447);
+			this->tabPage3->Size = System::Drawing::Size(816, 479);
 			this->tabPage3->TabIndex = 2;
 			this->tabPage3->Text = L"kNN";
 			this->tabPage3->UseVisualStyleBackColor = true;
+			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(720, 436);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(75, 23);
+			this->button8->TabIndex = 7;
+			this->button8->Text = L"Сбросить";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button8_Click);
 			// 
 			// label18
 			// 
@@ -846,7 +872,7 @@ namespace DoseEffectsWithGui {
 			// MyForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
-			this->ClientSize = System::Drawing::Size(803, 500);
+			this->ClientSize = System::Drawing::Size(864, 550);
 			this->Controls->Add(this->tabControl1);
 			this->DoubleBuffered = true;
 			this->MaximizeBox = false;
@@ -902,7 +928,7 @@ namespace DoseEffectsWithGui {
 		Core* createCore();
 		void doNWestimate();
 		void doKnnEstimate();
-		void addCDFtoCharts();
+		void addCDFtoChart(System::Windows::Forms::DataVisualization::Charting::Chart^ chart);
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		generate();
@@ -911,7 +937,8 @@ namespace DoseEffectsWithGui {
 		drawGraph(cT, this->chart1);
 		doKnnEstimate();
 		drawGraph(cT, this->chart2);
-		addCDFtoCharts();
+		addCDFtoChart(chart1);
+		addCDFtoChart(chart2);
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (u != NULL) {
@@ -946,6 +973,14 @@ namespace DoseEffectsWithGui {
 		doKnnEstimate();
 		addToGraph(cT, this->chart2);
 	}
+private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+		clearAllGraphs(chart1);
+		addCDFtoChart(chart1);
+	}
+	private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
+		clearAllGraphs(chart2);
+		addCDFtoChart(chart2);
+	}
 
 	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		if (Convert::ToString(comboBox2->SelectedItem) == "From file") {
@@ -962,5 +997,6 @@ namespace DoseEffectsWithGui {
 	private: System::Void numericUpDown7_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 		updateRange();
 	}
-	};
+	
+};
 }
