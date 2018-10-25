@@ -8,14 +8,16 @@
 #include <limits>
 #include <chrono>	
 double biasedEstimate(double x, double *u, int size_u, double *w, int size_w, double h, Core *core);
-void createWArray(double *u, double *w, int size, double M = 0.0, double D = 1.0);
-void createUArray(double *u, int size_u, double M = 0.0, double D = 1.0);
+void createWArray(double *u, double *w, int size, double M = 0.0, double stddev = 1.0);
+void createUArray(double *u, int size_u, double M = 0.0, double stddev = 1.0);
 
 struct point {
 	double x, y;
 	point(double _x = 0.0, double _y = 0.0): x(_x), y(_y){}
 };
 
+//То, с чем сравнивать
+point* getNormalDistribution(double x_low, double x_high, double step, double M, double stddev);
 /* Calculate NW
    Input: 
    limits to calculate and step

@@ -17,12 +17,14 @@ namespace DoseEffectsWithGui {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+	private:
 
-//My data
+		//My data
 		double x_low, x_high, step, c, h, *u, *w;
 		coreType cT;
 		int numberOfPoints, volume;
 		point* f;
+
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::ComboBox^  comboBox2;
 	private: System::Windows::Forms::Label^  label7;
@@ -34,11 +36,7 @@ namespace DoseEffectsWithGui {
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  column2;
-
 	private: System::Windows::Forms::Label^  label12;
-
-
-
 	private: System::Windows::Forms::GroupBox^  groupBox5;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown7;
@@ -47,7 +45,6 @@ namespace DoseEffectsWithGui {
 	private: System::Windows::Forms::Label^  label13;
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::TabPage^  tabPage3;
-
 	private: System::Windows::Forms::Label^  label11;
 	private: System::Windows::Forms::Label^  label10;
 	private: System::Windows::Forms::TextBox^  textBox2;
@@ -59,11 +56,8 @@ namespace DoseEffectsWithGui {
 	private: System::Windows::Forms::Label^  label18;
 	private: System::Windows::Forms::Label^  label17;
 	private: System::Windows::Forms::Label^  label16;
-
-
-
-
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart1;
+
 	public:
 		MyForm(void)
 		{
@@ -96,45 +90,27 @@ namespace DoseEffectsWithGui {
 					delete[] w;
 					w = NULL;
 				}
-			} 
+			}
 			if (f != NULL) {
 				delete[] f;
 				f = NULL;
 			}
 		}
 	private: System::Windows::Forms::TabControl^  tabControl1;
-	protected:
 	private: System::Windows::Forms::TabPage^  tabPage1;
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button1;
-
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
-
-
 	private: System::Windows::Forms::GroupBox^  groupBox4;
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown3;
-
-
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::TabPage^  tabPage2;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
-
-
-
 	private: System::Windows::Forms::DataGridView^  dataGridViewU;
-
-
-
-
-
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown4;
 	private: System::Windows::Forms::Label^  label6;
-
-
-
-
 
 
 	private:
@@ -249,7 +225,6 @@ namespace DoseEffectsWithGui {
 			// tabPage1
 			// 
 			this->tabPage1->Controls->Add(this->button2);
-			this->tabPage1->Controls->Add(this->button4);
 			this->tabPage1->Controls->Add(this->button1);
 			this->tabPage1->Controls->Add(this->groupBox2);
 			this->tabPage1->Controls->Add(this->groupBox1);
@@ -263,9 +238,9 @@ namespace DoseEffectsWithGui {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(15, 369);
+			this->button2->Location = System::Drawing::Point(10, 402);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 27);
+			this->button2->Size = System::Drawing::Size(172, 27);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Сброс";
 			this->button2->UseVisualStyleBackColor = true;
@@ -274,9 +249,9 @@ namespace DoseEffectsWithGui {
 			// button4
 			// 
 			this->button4->Enabled = false;
-			this->button4->Location = System::Drawing::Point(14, 402);
+			this->button4->Location = System::Drawing::Point(7, 130);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(175, 27);
+			this->button4->Size = System::Drawing::Size(166, 27);
 			this->button4->TabIndex = 1;
 			this->button4->Text = L"Пересчитать";
 			this->button4->UseVisualStyleBackColor = true;
@@ -284,9 +259,9 @@ namespace DoseEffectsWithGui {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(96, 369);
+			this->button1->Location = System::Drawing::Point(10, 369);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(93, 27);
+			this->button1->Size = System::Drawing::Size(172, 27);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Построить";
 			this->button1->UseVisualStyleBackColor = true;
@@ -316,7 +291,6 @@ namespace DoseEffectsWithGui {
 			this->dataGridViewU->ReadOnly = true;
 			this->dataGridViewU->Size = System::Drawing::Size(374, 410);
 			this->dataGridViewU->TabIndex = 0;
-			this->dataGridViewU->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
 			// 
 			// column1
 			// 
@@ -349,6 +323,7 @@ namespace DoseEffectsWithGui {
 			// groupBox5
 			// 
 			this->groupBox5->Controls->Add(this->comboBox1);
+			this->groupBox5->Controls->Add(this->button4);
 			this->groupBox5->Controls->Add(this->label2);
 			this->groupBox5->Controls->Add(this->numericUpDown5);
 			this->groupBox5->Controls->Add(this->label9);
@@ -366,7 +341,7 @@ namespace DoseEffectsWithGui {
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
 				L"Епанечникова ядро", L"Косинус-ядро", L"Лапласа ядро",
-					L"Гауссово ядро ", L"Квартическое ядро", L"Равномерное ядро", L"Треугольное ядро"
+					L"Гауссово ядро ", L"Квадратическое ядро", L"Равномерное ядро", L"Треугольное ядро"
 			});
 			this->comboBox1->Location = System::Drawing::Point(6, 34);
 			this->comboBox1->Name = L"comboBox1";
@@ -394,7 +369,6 @@ namespace DoseEffectsWithGui {
 			this->numericUpDown5->Size = System::Drawing::Size(60, 20);
 			this->numericUpDown5->TabIndex = 1;
 			this->numericUpDown5->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
-			this->numericUpDown5->ValueChanged += gcnew System::EventHandler(this, &MyForm::numericUpDown5_ValueChanged);
 			// 
 			// label9
 			// 
@@ -681,7 +655,7 @@ namespace DoseEffectsWithGui {
 			series5->ChartArea = L"ChartArea1";
 			series5->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
 			series5->Legend = L"Legend1";
-			series5->LegendText = L"Квартическое ядро";
+			series5->LegendText = L"Квадратическое ядро";
 			series5->Name = L"Func4";
 			series5->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
 			series6->BorderWidth = 3;
@@ -708,7 +682,6 @@ namespace DoseEffectsWithGui {
 			this->chart1->Size = System::Drawing::Size(756, 397);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
-			this->chart1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::chart1_Paint);
 			// 
 			// tabPage3
 			// 
@@ -795,7 +768,7 @@ namespace DoseEffectsWithGui {
 			series12->ChartArea = L"ChartArea1";
 			series12->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
 			series12->Legend = L"Legend1";
-			series12->LegendText = L"Квартическое ядро";
+			series12->LegendText = L"Квадратическое ядро";
 			series12->Name = L"Func4";
 			series13->BorderWidth = 3;
 			series13->ChartArea = L"ChartArea1";
@@ -848,8 +821,7 @@ namespace DoseEffectsWithGui {
 			this->numericUpDown1->Size = System::Drawing::Size(56, 20);
 			this->numericUpDown1->TabIndex = 0;
 			this->numericUpDown1->Tag = L"";
-			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 12, 0, 0, 0 });
-			this->numericUpDown1->ValueChanged += gcnew System::EventHandler(this, &MyForm::numericUpDown1_ValueChanged);
+			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
 			// 
 			// openFileDialog1
 			// 
@@ -893,369 +865,193 @@ namespace DoseEffectsWithGui {
 
 		}
 #pragma endregion
-	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-	}
 
+	/* functions to (re)draw graphs*/
+	private: 
+		void addToGraph(coreType ct, System::Windows::Forms::DataVisualization::Charting::Chart^ chart);
+		void clearAllGraphs(System::Windows::Forms::DataVisualization::Charting::Chart^ chart);
+		void drawGraph(coreType ct, System::Windows::Forms::DataVisualization::Charting::Chart^ chart);
+	
+	/*functions to process parameters*/
+	private: 
+		coreType getCoreType();
+		void refreshData();
+		void parseInterval();
+		void countInterval(double &low, double &high);
+		void updateRange();
 
-	private: void addToGraph(coreType ct, System::Windows::Forms::DataVisualization::Charting::Chart^ chart) {
-				
-		if (u == NULL) return;
-		System::Windows::Forms::DataVisualization::Charting::Series^ col;
-		switch (ct)
-		{
-		case DoseEffectsWithGui::epiph:
-
-			col = chart->Series["Func"];
-			break;
-		case DoseEffectsWithGui::cos:
-
-			col = chart->Series["Func1"];
-			break;
-		case DoseEffectsWithGui::lap:
-			col = chart->Series["Func2"];
-			break;
-		case DoseEffectsWithGui::gaus:
-			col = chart->Series["Func3"];
-			break;
-		case DoseEffectsWithGui::quart:
-			col = chart->Series["Func4"];
-			break;
-		case DoseEffectsWithGui::ravn:
-			col = chart->Series["Func5"];
-			break;
-		case DoseEffectsWithGui::triangl:
-			col = chart->Series["Func6"];
-			break;
-		default:
-			break;
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (u != NULL) {
+			delete[] u;
+			delete[] w;
+			delete[] f;
 		}
-		col->Points->Clear();
-		for (int i = 0; i < numberOfPoints; i++) {
-			col->Points->AddXY(f[i].x, f[i].y);
-		}
-	}
-
-	private: void clearAllGraphs(System::Windows::Forms::DataVisualization::Charting::Chart^ chart) {
-		chart->Series["Func"]->Points->Clear();
-		chart->Series["Func1"]->Points->Clear();
-		chart->Series["Func2"]->Points->Clear();
-		chart->Series["Func3"]->Points->Clear();
-		chart->Series["Func4"]->Points->Clear();
-		chart->Series["Func5"]->Points->Clear();
-		chart->Series["Func6"]->Points->Clear();
-	}
-
-	private: void drawGraph(coreType ct, System::Windows::Forms::DataVisualization::Charting::Chart^ chart) {
-		clearAllGraphs(chart);
-		addToGraph(ct, chart);
-	}
-	private: coreType getCoreType() {
-		String^ coreValue = Convert::ToString(comboBox1->SelectedItem);
-		if (coreValue == "Епанечникова ядро") {
-			return epiph;
-		} else if(Convert::ToString(comboBox1->SelectedItem) == "Косинус-ядро") {
-			return cos;
-		} else if(coreValue == "Лапласа ядро") {
-			return lap;
-		} else if(coreValue == "Гауссово ядро ") {
-			return gaus;
-		} else if(coreValue == "Квартическое ядро") {
-			return quart;
-		} else if(coreValue == "Равномерное ядро") {
-			return ravn;
-		} else if(coreValue == "Треугольное ядро") {
-			return triangl;
+		step = Convert::ToDouble(numericUpDown3->Value);
+		volume = Convert::ToInt32(numericUpDown4->Value);
+		c = Convert::ToDouble(numericUpDown5->Value);
+		if (Convert::ToString(comboBox2->SelectedItem) != "From file") {
+			u = new double[volume];
+			w = new double[volume];
+			double M = Convert::ToDouble(numericUpDown6->Value); //nean
+			double D = Convert::ToDouble(numericUpDown7->Value); //dispersion
+			createUArray(u, volume, M, sqrt(D));
+			createWArray(u, w, volume, M, sqrt(D));
+			updateRange();
 		}
 		else {
-			return epiph;
+			//donow
+		}
+		refreshData();
+		h = c * pow(volume, -0.2);
+		numberOfPoints = (int)((x_high - x_low) / step);
+		cT = getCoreType();
+		Core *core;
+		switch (cT)
+		{
+		case DoseEffectsWithGui::epiph:
+			core = new EpanchCore;
+			break;
+		case DoseEffectsWithGui::cos:
+			core = new CosCore;
+			break;
+		case DoseEffectsWithGui::lap:
+			core = new LaplCore;
+			break;
+		case DoseEffectsWithGui::ravn:
+			core = new RavnCore;
+			break;
+		case DoseEffectsWithGui::gaus:
+			core = new GausCore;
+			break;
+		case DoseEffectsWithGui::triangl:
+			core = new TreangCore;
+			break;
+		case DoseEffectsWithGui::quart:
+			core = new SquareCore;
+			break;
+		default:
+			core = new EpanchCore;
+			break;
+		}
+		f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
+		delete core;
+		button4->Enabled = true;
+		drawGraph(cT, this->chart1);
+	}
+	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (Convert::ToString(comboBox2->SelectedItem) == "From file") {
+			button3->Enabled = true;
+		}
+		else {
+			button3->Enabled = false;
 		}
 	}
-
-	private: void refreshData() {
-		while (dataGridViewU->Rows->Count > 1)
-			for (int i = 0; i < dataGridViewU->Rows->Count - 1; i++) {
-				dataGridViewU->Rows->Remove(dataGridViewU->Rows[i]);
-			}
+	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (u != NULL) {
-			for (int i = 0; i < volume; i++) {
-				dataGridViewU->Rows->Add();
-				dataGridViewU->Rows[i]->Cells[0]->Value = Convert::ToString(u[i]);
-				dataGridViewU->Rows[i]->Cells[1]->Value = Convert::ToString(w[i]);
-			}
-
+			delete[] f;
 		}
+		parseInterval();
+		step = Convert::ToDouble(numericUpDown3->Value);
+		c = Convert::ToDouble(numericUpDown5->Value);
+		refreshData();
+		h = c * pow(volume, -0.2);
+		numberOfPoints = (int)((x_high - x_low) / step);
+		cT = getCoreType();
+		Core *core;
+		switch (cT)
+		{
+		case DoseEffectsWithGui::epiph:
+			core = new EpanchCore;
+			break;
+		case DoseEffectsWithGui::cos:
+			core = new CosCore;
+			break;
+		case DoseEffectsWithGui::lap:
+			core = new LaplCore;
+			break;
+		case DoseEffectsWithGui::ravn:
+			core = new RavnCore;
+			break;
+		case DoseEffectsWithGui::gaus:
+			core = new GausCore;
+			break;
+		case DoseEffectsWithGui::triangl:
+			core = new TreangCore;
+			break;
+		case DoseEffectsWithGui::quart:
+			core = new SquareCore;
+			break;
+		default:
+			core = new EpanchCore;
+			break;
+		}
+		f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
+		delete core;
+		button4->Enabled = true;
+		addToGraph(cT, this->chart1);
 	}
-
-
- void parseInterval() {
-	 try {
-		 x_low = Convert::ToDouble(textBox1->Text);
-		 x_high = Convert::ToDouble(textBox2->Text);
-	 }
-	 catch (...) {
-		 try {
-			 String^ s = textBox1->Text->Replace('.', ',');
-			 x_low = Convert::ToDouble(s);
-			 s = textBox2->Text->Replace('.', ',');
-			 x_high = Convert::ToDouble(s);
-
-		 }
-		 catch (...) {
-			 MessageBox::Show("Интервал указан неверно");
-			 return;
-		 }
-	 }
-}
-
- void initialize_u() {
-	 u[0] = 0.1;
-	 u[1] = 0.15;
-	 u[3] = 0.25;
-	 u[9] = 0.4;
-	 u[7] = 0.6;
-	 u[5] = 1;
-	 u[6] = 1.2;
-	 u[8] = 1.8;
-	 u[4] = 2;
-	 u[2] = 2.15;
-
- }
- void initialize_v() {
-	 w[0] = 0;
-	 w[1] = 0;
-	 w[2] = 1;
-	 w[3] = 0;
-	 w[4] = 0;
-	 w[5] = 1;
-	 w[6] = 0;
-	 w[7] = 0;
-	 w[8] = 1;
-	 w[9] = 0;
- }
-
-
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	
-	//parseInterval();
-	if (u != NULL) {
-		delete[] u;
-		delete[] w;
-		delete[] f;
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		button4->Enabled = false;
+		if (u != NULL) {
+			delete[] u;
+			delete[] w;
+			delete[] f;
+		}
+		u = w = NULL;
+		f = NULL;
+		numberOfPoints = 0;
+		volume = 0;
+		refreshData();
+		drawGraph(cT, this->chart1);
 	}
-	step = Convert::ToDouble(numericUpDown3->Value);
-	volume = Convert::ToInt32(numericUpDown4->Value);
-	c = Convert::ToDouble(numericUpDown5->Value);
-	if (Convert::ToString(comboBox2->SelectedItem) != "From file") {
-		u = new double[volume];
-		w = new double[volume];
-		double M = Convert::ToDouble(numericUpDown6->Value);
-		double D = Convert::ToDouble(numericUpDown7->Value);
-		//initialize_u();
-		//initialize_v();
-		createUArray(u, volume, M, D);
-		createWArray(u, w, volume, M, D);
+	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+		clearAllGraphs(this->chart1);
+	}
+	private: System::Void numericUpDown6_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 		updateRange();
 	}
-	else {
-		//donow
+	private: System::Void numericUpDown7_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+		updateRange();
 	}
-	refreshData();
-	h = c * pow(volume, -0.2);
-	numberOfPoints = (int)((x_high - x_low) / step);
-	cT = getCoreType();
-	Core *core;
-	switch (cT)
-	{
-	case DoseEffectsWithGui::epiph:
-		core = new EpanchCore;
-		break;
-	case DoseEffectsWithGui::cos:
-		core = new CosCore;
-		break;
-	case DoseEffectsWithGui::lap:
-		core = new LaplCore;
-		break;
-	case DoseEffectsWithGui::ravn:
-		core = new RavnCore;
-		break;
-	case DoseEffectsWithGui::gaus:
-		core = new GausCore;
-		break;
-	case DoseEffectsWithGui::triangl:
-		core = new TreangCore;
-		break;
-	case DoseEffectsWithGui::quart:
-		core = new SquareCore;
-		break;
-	default:
-		core = new EpanchCore;
-		break;
+	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+		updateRange();
+		step = Convert::ToDouble(numericUpDown3->Value);
+		refreshData();
+		numberOfPoints = (int)((x_high - x_low) / step);
+		cT = getCoreType();
+		Core *core;
+		switch (cT)
+		{
+		case DoseEffectsWithGui::epiph:
+			core = new EpanchCore;
+			break;
+		case DoseEffectsWithGui::cos:
+			core = new CosCore;
+			break;
+		case DoseEffectsWithGui::lap:
+			core = new LaplCore;
+			break;
+		case DoseEffectsWithGui::ravn:
+			core = new RavnCore;
+			break;
+		case DoseEffectsWithGui::gaus:
+			core = new GausCore;
+			break;
+		case DoseEffectsWithGui::triangl:
+			core = new TreangCore;
+			break;
+		case DoseEffectsWithGui::quart:
+			core = new SquareCore;
+			break;
+		default:
+			core = new EpanchCore;
+			break;
+		}
+		int k = Convert::ToInt32(numericUpDown1->Value);
+		f = getKNN(x_low, x_high, step, core, k, u, w, volume);
+		delete core;
+		button4->Enabled = true;
+		addToGraph(cT, this->chart2);
 	}
-	f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
-	delete core;
-	button4->Enabled = true;
-	drawGraph(cT, this->chart1);
-}
-private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (Convert::ToString(comboBox2->SelectedItem) == "From file") {
-		button3->Enabled = true;
-	}
-	else {
-		button3->Enabled = false;
-	}
-}
-private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (u != NULL) {
-		delete[] f;
-	}
-	parseInterval();
-	step = Convert::ToDouble(numericUpDown3->Value);
-	c = Convert::ToDouble(numericUpDown5->Value);
-	refreshData();
-	h = c * pow(volume, -0.2);
-	numberOfPoints = (int)((x_high - x_low) / step);
-	cT = getCoreType();
-	Core *core;
-	switch (cT)
-	{
-	case DoseEffectsWithGui::epiph:
-		core = new EpanchCore;
-		break;
-	case DoseEffectsWithGui::cos:
-		core = new CosCore;
-		break;
-	case DoseEffectsWithGui::lap:
-		core = new LaplCore;
-		break;
-	case DoseEffectsWithGui::ravn:
-		core = new RavnCore;
-		break;
-	case DoseEffectsWithGui::gaus:
-		core = new GausCore;
-		break;
-	case DoseEffectsWithGui::triangl:
-		core = new TreangCore;
-		break;
-	case DoseEffectsWithGui::quart:
-		core = new SquareCore;
-		break;
-	default:
-		core = new EpanchCore;
-		break;
-	}
-	f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
-	delete core;
-	button4->Enabled = true;
-	addToGraph(cT, this->chart1);
-}
-private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-	button4->Enabled = false;
-	if (u != NULL) {
-		delete[] u;
-		delete[] w;
-		delete[] f;
-	}
-	u = w = NULL;
-	f = NULL;
-	numberOfPoints = 0;
-	volume = 0;
-	refreshData();
-	drawGraph(cT, this->chart1);
-}
-private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-	
-}
-private: System::Void panel1_VisibleChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void numericUpDown5_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void chart1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-
-}
-private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-	clearAllGraphs(this->chart1);
-}
-
-		 void countThreeSigmaInterval(double &low, double &high, double mean, double dispersion) {
-			 double range = sqrt(dispersion) *3;
-			 low = mean - range;
-			 high = mean + range;
-		 }
-
-		 void countInterval(double &low, double &high) {
-			 //строим функцию по всем встречающимся значениям
-			 low = *(std::min_element(u, u + volume));
-			 high = *(std::max_element(u, u + volume));
-		 }
-   
-	void updateRange() {
-		 double low, high;
-		 if (u != NULL) {
-			 countInterval(low, high);
-		 }
-		 else {
-			 countThreeSigmaInterval(low, high, Convert::ToDouble(numericUpDown6->Value), Convert::ToDouble(numericUpDown7->Value));
-		 }
-		 textBox1->Text = Convert::ToString(low);
-		 textBox2->Text = Convert::ToString(high);
-		 x_low = low;
-		 x_high = high;
-	 }
-
-private: System::Void numericUpDown6_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-	updateRange();
-}
-private: System::Void numericUpDown7_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-	updateRange();
-}
-private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (numericUpDown1->Value % 2 != 0) {
-		numericUpDown1->Value = numericUpDown1->Value + 1;
-	}
-}
-private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-	updateRange();
-	step = Convert::ToDouble(numericUpDown3->Value);
-	refreshData();
-	numberOfPoints = (int)((x_high - x_low) / step);
-	cT = getCoreType();
-	Core *core;
-	switch (cT)
-	{
-	case DoseEffectsWithGui::epiph:
-		core = new EpanchCore;
-		break;
-	case DoseEffectsWithGui::cos:
-		core = new CosCore;
-		break;
-	case DoseEffectsWithGui::lap:
-		core = new LaplCore;
-		break;
-	case DoseEffectsWithGui::ravn:
-		core = new RavnCore;
-		break;
-	case DoseEffectsWithGui::gaus:
-		core = new GausCore;
-		break;
-	case DoseEffectsWithGui::triangl:
-		core = new TreangCore;
-		break;
-	case DoseEffectsWithGui::quart:
-		core = new SquareCore;
-		break;
-	default:
-		core = new EpanchCore;
-		break;
-	}
-	int k = Convert::ToInt32(numericUpDown1->Value);
-	f = getKNN(x_low, x_high, step, core, k, u, w, volume);
-	delete core;
-	button4->Enabled = true;
-	addToGraph(cT,this->chart2);
-}
-private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void groupBox5_Enter(System::Object^  sender, System::EventArgs^  e) {
-}
-};
+	};
 }

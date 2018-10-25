@@ -18,24 +18,24 @@ double biasedEstimate(double x, double *u, int size_u, double *w, int size_w, do
 }
 
 //generate arrays
-void createUArray(double *u, int size_u, double M, double D) {
+void createUArray(double *u, int size_u, double M, double stddev) {
 	// create random number generator, seed is set to the time since the epoch begin
 	default_random_engine generator(chrono::system_clock::now().time_since_epoch().count());
 
 	// create normal distribution of double with set mean and stddev
-	normal_distribution <double> distribution(M, D);
+	normal_distribution <double> distribution(M, stddev);
 	for (int i = 0; i < size_u; i++)
 		u[i] = distribution(generator); 
 }
 
 
-void createWArray(double *u, double *w, int size, double M, double D) {
+void createWArray(double *u, double *w, int size, double M, double stddev) {
 	double temp;
 	// create random number generator, seed is set to the time since the epoch begin
 	default_random_engine generator(chrono::system_clock::now().time_since_epoch().count());
 
 	// create normal distribution of double with set mean and stddev
-	normal_distribution <double> distribution(M, D);
+	normal_distribution <double> distribution(M, stddev);
 	for (int i = 0; i < size; i++) {
 		temp = distribution(generator);
 		if (u[i] > temp)
@@ -45,6 +45,7 @@ void createWArray(double *u, double *w, int size, double M, double D) {
 	}
 }
 
+//получение оценок Надарая-Ватсона
 point* getFbiased(double x_low, double x_high, double step, Core *core, double h, double *u, double *w, int size) {
 	int number_of_calc = (int)((x_high - x_low) / step);
 	point* result = new point[number_of_calc];
@@ -91,9 +92,7 @@ double getH_point(double x, double *u, int k, int size) {
 	return abs(u[i2] - u[i1]) / 2;
 }
 
-//Оценки ближайших соседей (kNN оценки) можно получить из оценок Надарая–Ватсона,
-//если  взять ширину окна просмотра данных h специальным образом, именно, 
-//чтобы в интервал x-h, x+h попадало k выборочных значений случайной величины U. Тогда величина h является случайной величиной. 
+//в интервал x-h, x+h должно попадать k выборочных значений случайной величины U
 void getH(double x, int iter_count, double step, int k, double *u, int size, double* h) {
 	for (int i = 0; i < iter_count; i++, x+= step) {
 		h[i] = getH_point(x,u,k,size);
@@ -137,3 +136,24 @@ void countConfidenceInterval(double &low, double &high, double mean, int n, doub
 	high = mean + range;
 }
 
+// Returns the probability of [-inf,x] of a gaussian distribution
+double cdf(double x, double mu, double sigma)
+{
+	return 0.5 * (1 + erf((x - mu) / (sigma * sqrt(2.))));
+}
+
+point* getNormalDistribution(double x_low, double x_high, double step, double M, double stddev) {
+
+	// create normal distribution of double with set mean and stddev
+	normal_distribution <double> distribution(M, stddev);
+	int number_of_calc = (int)((x_high - x_low) / step);
+
+	point* result = new point[number_of_calc];
+	double x = x_low, y = 0.0;
+	for (int i = 0; i < number_of_calc; i++) {
+		result[i].x = x;
+		result[i].y = cdf(x, M, stddev);
+		x += step;
+	}
+	return result;
+}
