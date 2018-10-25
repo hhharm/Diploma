@@ -74,7 +74,7 @@ coreType MyForm::getCoreType() {
 	else if (coreValue == "Гауссово ядро ") {
 		return gaus;
 	}
-	else if (coreValue == "Квартическое ядро") {
+	else if (coreValue == "Квадратическое ядро") {
 		return quart;
 	}
 	else if (coreValue == "Равномерное ядро") {
