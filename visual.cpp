@@ -86,7 +86,7 @@ coreType MyForm::getCoreType() {
 
 
 /*read/parse/update parameters*/
-void MyForm::refreshData() {
+void MyForm::refreshGrid() {
 	while (dataGridViewU->Rows->Count > 1)
 		for (int i = 0; i < dataGridViewU->Rows->Count - 1; i++) {
 			dataGridViewU->Rows->Remove(dataGridViewU->Rows[i]);
@@ -138,4 +138,79 @@ void MyForm::updateRange() {
 	textBox2->Text = Convert::ToString(high);
 	x_low = low;
 	x_high = high;
+}
+
+
+/*button clicks*/
+void MyForm::generate() {
+	if (u != NULL) {
+		delete[] u;
+		delete[] w;
+		delete[] f;
+	}
+	volume = Convert::ToInt32(numericUpDown4->Value);
+	if (Convert::ToString(comboBox2->SelectedItem) != "From file") {
+		u = new double[volume];
+		w = new double[volume];
+		double M = Convert::ToDouble(numericUpDown6->Value); //mean
+		double D = Convert::ToDouble(numericUpDown7->Value); //dispersion
+		createUArray(u, volume, M, sqrt(D));
+		createWArray(u, w, volume, M, sqrt(D));
+		updateRange();
+	}
+	else {
+		//donow
+	}
+	refreshGrid();
+}
+
+Core* MyForm::createCore() {
+	cT = getCoreType();
+	Core *core;
+	switch (cT)
+	{
+	case DoseEffectsWithGui::epiph:
+		core = new EpanchCore;
+		break;
+	case DoseEffectsWithGui::cos:
+		core = new CosCore;
+		break;
+	case DoseEffectsWithGui::lap:
+		core = new LaplCore;
+		break;
+	case DoseEffectsWithGui::ravn:
+		core = new RavnCore;
+		break;
+	case DoseEffectsWithGui::gaus:
+		core = new GausCore;
+		break;
+	case DoseEffectsWithGui::triangl:
+		core = new TreangCore;
+		break;
+	case DoseEffectsWithGui::quart:
+		core = new SquareCore;
+		break;
+	default:
+		core = new EpanchCore;
+		break;
+	}
+	return core;
+}
+void MyForm::doNWestimate(){
+	step = Convert::ToDouble(numericUpDown3->Value);
+	c = Convert::ToDouble(numericUpDown5->Value);
+	h = c * pow(volume, -0.2);
+	Core* core = createCore();
+	numberOfPoints = (int)((x_high - x_low) / step);
+	f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
+	delete core;
+}
+void MyForm::doKnnEstimate() {
+	step = Convert::ToDouble(numericUpDown3->Value);
+	numberOfPoints = (int)((x_high - x_low) / step);
+	cT = getCoreType();
+	Core *core = createCore();
+	int k = Convert::ToInt32(numericUpDown1->Value);
+	f = getKNN(x_low, x_high, step, core, k, u, w, volume);
+	delete core;
 }

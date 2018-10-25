@@ -334,7 +334,6 @@ namespace DoseEffectsWithGui {
 			this->groupBox5->TabIndex = 4;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"Ядро и окно вычисления";
-			this->groupBox5->Enter += gcnew System::EventHandler(this, &MyForm::groupBox5_Enter);
 			// 
 			// comboBox1
 			// 
@@ -515,7 +514,6 @@ namespace DoseEffectsWithGui {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(99, 20);
 			this->textBox2->TabIndex = 3;
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
 			// 
 			// textBox1
 			// 
@@ -875,68 +873,24 @@ namespace DoseEffectsWithGui {
 	/*functions to process parameters*/
 	private: 
 		coreType getCoreType();
-		void refreshData();
+		void refreshGrid();
 		void parseInterval();
 		void countInterval(double &low, double &high);
 		void updateRange();
 
+	private:
+		void generate();
+		Core* createCore();
+		void doNWestimate();
+		void doKnnEstimate();
+
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (u != NULL) {
-			delete[] u;
-			delete[] w;
-			delete[] f;
-		}
-		step = Convert::ToDouble(numericUpDown3->Value);
-		volume = Convert::ToInt32(numericUpDown4->Value);
-		c = Convert::ToDouble(numericUpDown5->Value);
-		if (Convert::ToString(comboBox2->SelectedItem) != "From file") {
-			u = new double[volume];
-			w = new double[volume];
-			double M = Convert::ToDouble(numericUpDown6->Value); //nean
-			double D = Convert::ToDouble(numericUpDown7->Value); //dispersion
-			createUArray(u, volume, M, sqrt(D));
-			createWArray(u, w, volume, M, sqrt(D));
-			updateRange();
-		}
-		else {
-			//donow
-		}
-		refreshData();
-		h = c * pow(volume, -0.2);
-		numberOfPoints = (int)((x_high - x_low) / step);
-		cT = getCoreType();
-		Core *core;
-		switch (cT)
-		{
-		case DoseEffectsWithGui::epiph:
-			core = new EpanchCore;
-			break;
-		case DoseEffectsWithGui::cos:
-			core = new CosCore;
-			break;
-		case DoseEffectsWithGui::lap:
-			core = new LaplCore;
-			break;
-		case DoseEffectsWithGui::ravn:
-			core = new RavnCore;
-			break;
-		case DoseEffectsWithGui::gaus:
-			core = new GausCore;
-			break;
-		case DoseEffectsWithGui::triangl:
-			core = new TreangCore;
-			break;
-		case DoseEffectsWithGui::quart:
-			core = new SquareCore;
-			break;
-		default:
-			core = new EpanchCore;
-			break;
-		}
-		f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
-		delete core;
+		generate();
 		button4->Enabled = true;
+		doNWestimate();
 		drawGraph(cT, this->chart1);
+		doKnnEstimate();
+		addToGraph(cT, this->chart2);
 	}
 	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		if (Convert::ToString(comboBox2->SelectedItem) == "From file") {
@@ -951,44 +905,10 @@ namespace DoseEffectsWithGui {
 			delete[] f;
 		}
 		parseInterval();
-		step = Convert::ToDouble(numericUpDown3->Value);
-		c = Convert::ToDouble(numericUpDown5->Value);
-		refreshData();
-		h = c * pow(volume, -0.2);
-		numberOfPoints = (int)((x_high - x_low) / step);
-		cT = getCoreType();
-		Core *core;
-		switch (cT)
-		{
-		case DoseEffectsWithGui::epiph:
-			core = new EpanchCore;
-			break;
-		case DoseEffectsWithGui::cos:
-			core = new CosCore;
-			break;
-		case DoseEffectsWithGui::lap:
-			core = new LaplCore;
-			break;
-		case DoseEffectsWithGui::ravn:
-			core = new RavnCore;
-			break;
-		case DoseEffectsWithGui::gaus:
-			core = new GausCore;
-			break;
-		case DoseEffectsWithGui::triangl:
-			core = new TreangCore;
-			break;
-		case DoseEffectsWithGui::quart:
-			core = new SquareCore;
-			break;
-		default:
-			core = new EpanchCore;
-			break;
-		}
-		f = getFbiased(x_low, x_high, step, core, h, u, w, volume);
-		delete core;
-		button4->Enabled = true;
+		doNWestimate();
 		addToGraph(cT, this->chart1);
+		doKnnEstimate();
+		addToGraph(cT, this->chart2);
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		button4->Enabled = false;
@@ -1001,8 +921,9 @@ namespace DoseEffectsWithGui {
 		f = NULL;
 		numberOfPoints = 0;
 		volume = 0;
-		refreshData();
-		drawGraph(cT, this->chart1);
+		refreshGrid();
+		clearAllGraphs(this->chart1);
+		clearAllGraphs(this->chart2);
 	}
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 		clearAllGraphs(this->chart1);
@@ -1015,42 +936,7 @@ namespace DoseEffectsWithGui {
 	}
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
 		updateRange();
-		step = Convert::ToDouble(numericUpDown3->Value);
-		refreshData();
-		numberOfPoints = (int)((x_high - x_low) / step);
-		cT = getCoreType();
-		Core *core;
-		switch (cT)
-		{
-		case DoseEffectsWithGui::epiph:
-			core = new EpanchCore;
-			break;
-		case DoseEffectsWithGui::cos:
-			core = new CosCore;
-			break;
-		case DoseEffectsWithGui::lap:
-			core = new LaplCore;
-			break;
-		case DoseEffectsWithGui::ravn:
-			core = new RavnCore;
-			break;
-		case DoseEffectsWithGui::gaus:
-			core = new GausCore;
-			break;
-		case DoseEffectsWithGui::triangl:
-			core = new TreangCore;
-			break;
-		case DoseEffectsWithGui::quart:
-			core = new SquareCore;
-			break;
-		default:
-			core = new EpanchCore;
-			break;
-		}
-		int k = Convert::ToInt32(numericUpDown1->Value);
-		f = getKNN(x_low, x_high, step, core, k, u, w, volume);
-		delete core;
-		button4->Enabled = true;
+		doKnnEstimate();
 		addToGraph(cT, this->chart2);
 	}
 	};
