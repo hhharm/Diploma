@@ -4,7 +4,7 @@
 #include "defines.h"
 namespace DoseEffectsWithGui {
 
-	enum coreType { epiph, cos, lap, ravn, gaus, triangl, quart };
+	enum coreType { epiph, cos, lap, ravn, gaus, triangl, quart, notCore };
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -135,19 +135,20 @@ namespace DoseEffectsWithGui {
 			System::Windows::Forms::DataVisualization::Charting::Series^  series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series11 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series12 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series13 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series14 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series15 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series16 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->dataGridViewU = (gcnew System::Windows::Forms::DataGridView());
@@ -156,6 +157,7 @@ namespace DoseEffectsWithGui {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->numericUpDown5 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->label9 = (gcnew System::Windows::Forms::Label());
@@ -245,17 +247,6 @@ namespace DoseEffectsWithGui {
 			this->button2->Text = L"Сброс";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
-			// 
-			// button4
-			// 
-			this->button4->Enabled = false;
-			this->button4->Location = System::Drawing::Point(7, 130);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(166, 27);
-			this->button4->TabIndex = 1;
-			this->button4->Text = L"Пересчитать";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// button1
 			// 
@@ -347,6 +338,17 @@ namespace DoseEffectsWithGui {
 			this->comboBox1->Size = System::Drawing::Size(152, 21);
 			this->comboBox1->TabIndex = 1;
 			this->comboBox1->Text = L"Епанечникова";
+			// 
+			// button4
+			// 
+			this->button4->Enabled = false;
+			this->button4->Location = System::Drawing::Point(7, 130);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(166, 27);
+			this->button4->TabIndex = 1;
+			this->button4->Text = L"Пересчитать";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// label2
 			// 
@@ -670,6 +672,13 @@ namespace DoseEffectsWithGui {
 			series7->LegendText = L"Треугольное ядро";
 			series7->Name = L"Func6";
 			series7->SmartLabelStyle->AllowOutsidePlotArea = System::Windows::Forms::DataVisualization::Charting::LabelOutsidePlotAreaStyle::Yes;
+			series8->BorderDashStyle = System::Windows::Forms::DataVisualization::Charting::ChartDashStyle::Dash;
+			series8->ChartArea = L"ChartArea1";
+			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series8->Color = System::Drawing::Color::Black;
+			series8->Legend = L"Legend1";
+			series8->LegendText = L"Нормальное распределение";
+			series8->Name = L"Func7";
 			this->chart1->Series->Add(series1);
 			this->chart1->Series->Add(series2);
 			this->chart1->Series->Add(series3);
@@ -677,6 +686,7 @@ namespace DoseEffectsWithGui {
 			this->chart1->Series->Add(series5);
 			this->chart1->Series->Add(series6);
 			this->chart1->Series->Add(series7);
+			this->chart1->Series->Add(series8);
 			this->chart1->Size = System::Drawing::Size(756, 397);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -738,55 +748,63 @@ namespace DoseEffectsWithGui {
 			this->chart2->Location = System::Drawing::Point(1, 50);
 			this->chart2->Name = L"chart2";
 			this->chart2->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Bright;
-			series8->BorderWidth = 3;
-			series8->ChartArea = L"ChartArea1";
-			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series8->Legend = L"Legend1";
-			series8->LegendText = L"Епанечникова ядро";
-			series8->Name = L"Func";
 			series9->BorderWidth = 3;
 			series9->ChartArea = L"ChartArea1";
 			series9->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
 			series9->Legend = L"Legend1";
-			series9->LegendText = L"Косинус-ядро";
-			series9->Name = L"Func1";
+			series9->LegendText = L"Епанечникова ядро";
+			series9->Name = L"Func";
 			series10->BorderWidth = 3;
 			series10->ChartArea = L"ChartArea1";
 			series10->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
 			series10->Legend = L"Legend1";
-			series10->LegendText = L"Лапласа ядро";
-			series10->Name = L"Func2";
+			series10->LegendText = L"Косинус-ядро";
+			series10->Name = L"Func1";
 			series11->BorderWidth = 3;
 			series11->ChartArea = L"ChartArea1";
 			series11->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
 			series11->Legend = L"Legend1";
-			series11->LegendText = L"Гауссово ядро";
-			series11->Name = L"Func3";
+			series11->LegendText = L"Лапласа ядро";
+			series11->Name = L"Func2";
 			series12->BorderWidth = 3;
 			series12->ChartArea = L"ChartArea1";
 			series12->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
 			series12->Legend = L"Legend1";
-			series12->LegendText = L"Квадратическое ядро";
-			series12->Name = L"Func4";
+			series12->LegendText = L"Гауссово ядро";
+			series12->Name = L"Func3";
 			series13->BorderWidth = 3;
 			series13->ChartArea = L"ChartArea1";
 			series13->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
 			series13->Legend = L"Legend1";
-			series13->LegendText = L"Равномерное ядро";
-			series13->Name = L"Func5";
+			series13->LegendText = L"Квадратическое ядро";
+			series13->Name = L"Func4";
 			series14->BorderWidth = 3;
 			series14->ChartArea = L"ChartArea1";
 			series14->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
 			series14->Legend = L"Legend1";
-			series14->LegendText = L"Треугольное ядро";
-			series14->Name = L"Func6";
-			this->chart2->Series->Add(series8);
+			series14->LegendText = L"Равномерное ядро";
+			series14->Name = L"Func5";
+			series15->BorderWidth = 3;
+			series15->ChartArea = L"ChartArea1";
+			series15->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series15->Legend = L"Legend1";
+			series15->LegendText = L"Треугольное ядро";
+			series15->Name = L"Func6";
+			series16->BorderDashStyle = System::Windows::Forms::DataVisualization::Charting::ChartDashStyle::Dash;
+			series16->ChartArea = L"ChartArea1";
+			series16->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series16->Color = System::Drawing::Color::Black;
+			series16->Legend = L"Legend1";
+			series16->LegendText = L"Нормальное распределение";
+			series16->Name = L"Func7";
 			this->chart2->Series->Add(series9);
 			this->chart2->Series->Add(series10);
 			this->chart2->Series->Add(series11);
 			this->chart2->Series->Add(series12);
 			this->chart2->Series->Add(series13);
 			this->chart2->Series->Add(series14);
+			this->chart2->Series->Add(series15);
+			this->chart2->Series->Add(series16);
 			this->chart2->Size = System::Drawing::Size(760, 397);
 			this->chart2->TabIndex = 3;
 			this->chart2->Text = L"chart2";
@@ -878,11 +896,13 @@ namespace DoseEffectsWithGui {
 		void countInterval(double &low, double &high);
 		void updateRange();
 
+	/*functions for button clicks*/
 	private:
 		void generate();
 		Core* createCore();
 		void doNWestimate();
 		void doKnnEstimate();
+		void addCDFtoCharts();
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		generate();
@@ -890,15 +910,8 @@ namespace DoseEffectsWithGui {
 		doNWestimate();
 		drawGraph(cT, this->chart1);
 		doKnnEstimate();
-		addToGraph(cT, this->chart2);
-	}
-	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-		if (Convert::ToString(comboBox2->SelectedItem) == "From file") {
-			button3->Enabled = true;
-		}
-		else {
-			button3->Enabled = false;
-		}
+		drawGraph(cT, this->chart2);
+		addCDFtoCharts();
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (u != NULL) {
@@ -928,16 +941,26 @@ namespace DoseEffectsWithGui {
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 		clearAllGraphs(this->chart1);
 	}
+	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+		updateRange();
+		doKnnEstimate();
+		addToGraph(cT, this->chart2);
+	}
+
+	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (Convert::ToString(comboBox2->SelectedItem) == "From file") {
+			button3->Enabled = true;
+		}
+		else {
+			button3->Enabled = false;
+		}
+	}
+
 	private: System::Void numericUpDown6_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 		updateRange();
 	}
 	private: System::Void numericUpDown7_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 		updateRange();
-	}
-	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-		updateRange();
-		doKnnEstimate();
-		addToGraph(cT, this->chart2);
 	}
 	};
 }

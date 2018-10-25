@@ -136,24 +136,3 @@ void countConfidenceInterval(double &low, double &high, double mean, int n, doub
 	high = mean + range;
 }
 
-// Returns the probability of [-inf,x] of a gaussian distribution
-double cdf(double x, double mu, double sigma)
-{
-	return 0.5 * (1 + erf((x - mu) / (sigma * sqrt(2.))));
-}
-
-point* getNormalDistribution(double x_low, double x_high, double step, double M, double stddev) {
-
-	// create normal distribution of double with set mean and stddev
-	normal_distribution <double> distribution(M, stddev);
-	int number_of_calc = (int)((x_high - x_low) / step);
-
-	point* result = new point[number_of_calc];
-	double x = x_low, y = 0.0;
-	for (int i = 0; i < number_of_calc; i++) {
-		result[i].x = x;
-		result[i].y = cdf(x, M, stddev);
-		x += step;
-	}
-	return result;
-}

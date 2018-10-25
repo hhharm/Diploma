@@ -31,6 +31,9 @@ void MyForm::addToGraph(coreType ct, System::Windows::Forms::DataVisualization::
 	case DoseEffectsWithGui::triangl:
 		col = chart->Series["Func6"];
 		break;
+		//this is normal distribution
+	case DoseEffectsWithGui::notCore:
+		col = chart->Series["Func7"];
 	default:
 		break;
 	}
@@ -48,6 +51,7 @@ void MyForm::clearAllGraphs(System::Windows::Forms::DataVisualization::Charting:
 	chart->Series["Func4"]->Points->Clear();
 	chart->Series["Func5"]->Points->Clear();
 	chart->Series["Func6"]->Points->Clear();
+	chart->Series["Func7"]->Points->Clear();
 }
 
 void MyForm::drawGraph(coreType ct, System::Windows::Forms::DataVisualization::Charting::Chart^ chart) {
@@ -162,6 +166,36 @@ void MyForm::generate() {
 		//donow
 	}
 	refreshGrid();
+}
+
+
+
+point* getNormalDistribution(double x_low, double x_high, double step, double M, double stddev) {
+
+	// create normal distribution of double with set mean and stddev
+	normal_distribution <double> distribution(M, stddev);
+	int number_of_calc = (int)((x_high - x_low) / step);
+
+	point* result = new point[number_of_calc];
+	double x = x_low, y = 0.0;
+	for (int i = 0; i < number_of_calc; i++, x+=step) {
+		result[i].x = x;
+		// Returns the probability of [-inf,x] of a gaussian distribution
+		result[i].y = 0.5 * (1 + erf((x - M) / (stddev * sqrt(2.))));
+	}
+	return result;
+}
+//если у нас выборка получена случайным образом, то мы знаем заранее, как распределЄн ’ и можем
+// добавить на чарты графики CDF (cumulative distribution function), т.е. функцию распределени€ дл€ нормального
+// распределени€ с заданными мат. ожиданием и стандартным отклонением
+void MyForm::addCDFtoCharts() {
+	if (Convert::ToString(comboBox2->SelectedItem) == "From file") return;
+
+	double M = Convert::ToDouble(numericUpDown6->Value); //mean
+	double D = Convert::ToDouble(numericUpDown7->Value); //dispersion
+	f = getNormalDistribution(x_low, x_high, step, M, sqrt(D));
+	addToGraph(notCore, chart1);
+	addToGraph(notCore, chart2);
 }
 
 Core* MyForm::createCore() {
